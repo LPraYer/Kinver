@@ -1,0 +1,21 @@
+﻿@model List<MVCKinver.Models.Product>
+@{
+    ViewBag.Title = "Kinver - 景悦锦辰";
+}
+<div id="promotion"></div>
+<h3>
+    <em>热销商品</em>
+</h3>
+<ul id="product-list">
+    @foreach (var product in Model)
+    { 
+        <li>
+            <a href="@Url.Action("Details", "Store", new { id = product.ProductId})">
+                <img alt="@product.Title" src="@product.ProductImageUrl" />
+                <span>
+                    @product.Title
+                </span>
+            </a>
+        </li>
+    }
+</ul>

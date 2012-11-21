@@ -1,0 +1,27 @@
+﻿@model MVCKinver.Models.Product
+
+@{
+    ViewBag.Title = "产品详情 - " + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+<p>
+    <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+</p>
+<div id="product-details">
+    <p>
+        <em>类别：</em>
+        @Model.Genre.Name
+    </p>
+    <p>
+        <em>供应商：</em>
+        @Model.Producer.Name
+    </p>
+    <p>
+        <em>价格:</em>
+        @String.Format("{0:F}",Model.Price)
+    </p>
+    <p class="button">
+        @Html.ActionLink("添加到购物车", "AddToCart", "ShoppingCart", new { id = Model.ProductId },"")
+    </p>
+</div>
