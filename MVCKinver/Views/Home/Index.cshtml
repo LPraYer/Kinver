@@ -2,20 +2,145 @@
 @{
     ViewBag.Title = "Kinver - 景悦锦辰";
 }
-<div id="promotion"></div>
-<h3>
-    <em>热销商品</em>
-</h3>
-<ul id="product-list">
-    @foreach (var product in Model)
-    { 
-        <li>
-            <a href="@Url.Action("Details", "Store", new { id = product.ProductId})">
-                <img alt="@product.Title" src="@product.ProductImageUrl" />
-                <span>
-                    @product.Title
-                </span>
-            </a>
-        </li>
-    }
-</ul>
+<div id="promotion">
+    <div class="container"></div>
+</div>
+<div id="services">
+    <div class="container">
+        <h3>
+            我们提供以下服务
+        </h3>
+        <div class="row">
+            <div class="span3">
+                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+                <h4>
+                    馈赠礼盒
+                </h4>
+                <p>
+                    景悦豪礼，景悦锦盒，景悦佳品
+                </p>
+                <p>
+                    不同礼盒，同样品质，适应各种需求
+                </p>
+                <p>
+                    以“礼”服人，选择景悦锦辰
+                </p>
+                <p>
+                    <a class="btn">
+                        选择礼盒 >>
+                    </a>
+                </p>
+            </div>
+            <div class="span3">
+                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+                <h4>
+                    企业礼券
+                </h4>
+                <p>
+                    产品丰富，组合更多样
+                </p>
+                <p>
+                    分发快捷，提取更简单
+                </p>
+                <p>
+                    激励员工，用品质证明
+                </p>
+                <p>
+                    <a class="btn">
+                        选择礼券 >>
+                    </a>
+                </p>
+            </div>
+            <div class="span3">
+                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+                <h4>
+                    餐厅配送
+                </h4>
+                <p>
+                    新鲜，安全，健康
+                </p>
+                <p>
+                    为客户提供最佳美食
+                </p>
+                <p>
+                    景悦锦辰与您一路同行
+                </p>
+                <p>
+                    <a class="btn">
+                        查看详情 >>
+                    </a>
+                </p>
+                <p class="muted">
+                    * 仅限北京地区
+                </p>
+            </div>
+            <div class="span3">
+                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+                <h4>
+                    家庭配送
+                </h4>
+                <p>
+                    为佳人
+                </p>
+                <p>
+                    选择最棒的食材
+                </p>
+                <p>
+                    秀最好的厨艺
+                </p>
+                <p>
+                    <a class="btn">
+                        查看家庭配送方案 >>
+                    </a>
+                </p>
+                <p class="muted">
+                    * 仅限北京地区
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="hot-products">
+    <div class="container">
+        <h3>
+            我们供应来自世界各地的优质食材
+        </h3>
+        <div class="row">
+            @foreach (var product in Model)
+            { 
+                <div class="span4">
+                    <a href="@Url.Action("Details", "Store", new { id = product.ProductId})">
+                        <img class="img-polaroid" alt="@product.Title" src="@product.ProductImageUrl" />
+                    </a>
+                    <p class="title">
+                        <a href="@Url.Action("Details", "Store", new { id = product.ProductId})" title="@product.Title" target="_blank">
+                            @product.Title
+                        </a>
+                        <span class="price">￥@product.Price<span class="kg">&nbsp;/&nbsp;kg</span></span>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div id="restaurants">
+    <div class="container">
+        <h3>
+            您还可以到以下餐厅享用由景悦锦辰食材烹饪的美味佳肴
+        </h3>
+        <div class="row">
+            <div class="span2 offset2">
+                <img src="@Url.Content("~/Content/Images/home-showcase.png")" />
+            </div>
+            <div class="span2">
+                <img src="@Url.Content("~/Content/Images/home-showcase.png")" />
+            </div>
+            <div class="span2">
+                <img src="@Url.Content("~/Content/Images/home-showcase.png")" />
+            </div>
+            <div class="span2">
+                <img src="@Url.Content("~/Content/Images/home-showcase.png")" />
+            </div>
+        </div>
+    </div>
+</div>

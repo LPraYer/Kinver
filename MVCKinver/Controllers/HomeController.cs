@@ -16,7 +16,7 @@ namespace MVCKinver.Controllers
         public ActionResult Index()
         {
             //get most popular products
-            var products = GetTopSellingProducts(5);
+            var products = GetTopSellingProducts(3);
             return View(products);
         }
 
