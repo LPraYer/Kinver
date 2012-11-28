@@ -179,11 +179,11 @@ namespace MVCKinver.Models
 
             new List<Product>
             {
-                new Product { Title = "挪威深海帝王蟹", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "景悦锦辰"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
+                new Product { Title = "挪威深海帝王蟹", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg", IsHot = 1 },
                 new Product { Title = "Worlds", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Aaron Goldberg"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
                 new Product { Title = "For Those About To Rock We Salute You", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Let There Be Rock", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Balls to the Wall", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Accept"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
+                new Product { Title = "北极贝", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Daizi_1.jpg", IsHot = 1 },
+                new Product { Title = "三文鱼", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Accept"), ProductImageUrl = "/Content/Images/ProductImages/Salmon_1.jpg", IsHot = 1 },
                 new Product { Title = "Restless and Wild", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Accept"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
                 new Product { Title = "Górecki: Symphony No. 3", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
                 new Product { Title = "Big Ones", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Aerosmith"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
@@ -424,8 +424,16 @@ namespace MVCKinver.Models
                 new Product { Title = "Bach: Goldberg Variations", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Wilhelm Kempff"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
                 new Product { Title = "Bartok: Violin & Viola Concertos", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Yehudi Menuhin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
                 new Product { Title = "Bach: The Cello Suites", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Yo-Yo Ma"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ao Vivo [IMPORT]", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Zeca Pagodinho"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
+                new Product { Title = "Ao Vivo [IMPORT]", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Zeca Pagodinho"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" }
             }.ForEach(a => context.Products.Add(a));
+
+            new List<Service>
+            {
+                new Service {Title = "馈赠礼盒",KeyDescription = "馈赠礼盒业务主要描述馈赠礼盒业务主要描述馈赠礼盒业务主要描述",PlusDescription = "馈赠礼盒业务辅助描述馈赠礼盒业务辅助描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
+                new Service {Title = "企业礼券",KeyDescription = "企业礼券业务主要描述企业礼券业务主要描述",PlusDescription = "企业礼券业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
+                new Service {Title = "餐厅配送",KeyDescription = "餐厅配送业务主要描述餐厅配送业务主要描述",PlusDescription = "餐厅配送业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
+                new Service {Title = "家庭配送",KeyDescription = "家庭配送业务主要描述",PlusDescription = "家庭配送业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"}
+            }.ForEach(a => context.Services.Add(a));
         }
     }
 }

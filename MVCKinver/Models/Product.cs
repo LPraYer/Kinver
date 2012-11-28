@@ -35,9 +35,11 @@ namespace MVCKinver.Models
         public string ProductImageUrl { get; set; }
         
         public Genre Genre { get; set; }
-
+        
         public Producer Producer { get; set; }
 
-        public virtual List<OrderDetail> OrderDetails { get; set; }
+        public int IsHot { get; set; }
+
+        //public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }

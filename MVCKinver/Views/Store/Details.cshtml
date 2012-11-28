@@ -4,24 +4,267 @@
     ViewBag.Title = "产品详情 - " + Model.Title;
 }
 
-<h2>@Model.Title</h2>
-<p>
-    <img alt="@Model.Title" src="@Model.ProductImageUrl" />
-</p>
-<div id="product-details">
-    <p>
-        <em>类别：</em>
-        @Model.Genre.Name
-    </p>
-    <p>
-        <em>供应商：</em>
-        @Model.Producer.Name
-    </p>
-    <p>
-        <em>价格:</em>
-        @String.Format("{0:F}",Model.Price)
-    </p>
-    <p class="button">
-        @Html.ActionLink("添加到购物车", "AddToCart", "ShoppingCart", new { id = Model.ProductId },"")
-    </p>
+<div class="container container-margin-top">
+    <div class="row">
+        <div class="span2">
+            @{Html.RenderAction("GenreMenu", "Store");}
+        </div>
+        <div id="product-details" class ="span10">
+            <div id="product-details-services">
+                <img class="on" title="礼盒" src="@Url.Content("~/Content/Images/placeholder.gif")" />
+                <img class="on" title="礼券" src="@Url.Content("~/Content/Images/placeholder.gif")" />
+                <img class="on" title="餐厅配送" src="@Url.Content("~/Content/Images/placeholder.gif")" />
+                <img class="off" title="家庭配送" src="@Url.Content("~/Content/Images/placeholder.gif")" />
+            </div>
+            <div id="product-details-header">
+                <h2>黑虎虾 - 整虾</h2>
+                <h3>Black Tiger Shrimp - HOSO</h3>
+            </div>
+            <div id="product-details-harvesting-area">
+                <p id="harvesting-area">
+                <span class="label label-info">产自越南</span>
+                </p>
+            </div>
+            <div id="product-details-intro">
+                <p>
+                    黑虎虾原产于东南亚、越南、泰国和缅甸，其中以越南南部出产的黑虎虾最为鲜美甘甜，肉质饱满弹性十足。
+                    湄公河与南中国海咸淡交界处，矿物质含量丰富，所以这里产的虾营养丰富，肥美无比。
+                    黑虎大虾越大越珍贵，特别是2头以上的，野生的黑虎大虾产量更是稀缺。
+                </p>
+            </div>
+            <div id="product-details-images" class="row">
+                <div class="span2">
+                    <a rel="group" href="@Model.ProductImageUrl" title="first pic">
+                        <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+                    </a>
+                </div>
+                <div class="span2">
+                    <a rel="group" href="@Model.ProductImageUrl" title="first pic">
+                        <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+                    </a>
+                </div>
+                <div class="span2">
+                    <a rel="group" href="@Model.ProductImageUrl" title="first pic">
+                        <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+                    </a>
+                </div>
+                <div class="span2">
+                    <a rel="group" href="@Model.ProductImageUrl" title="first pic">
+                        <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+                    </a>
+                </div>
+                <div class="span2">
+                    <a rel="group" href="@Model.ProductImageUrl" title="first pic">
+                        <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+                    </a>
+                </div>
+               
+            </div>
+            <div id="product-details-size">
+                <h4 class="product-details-label">
+                    可选规格
+                </h4>
+                <table class="table table-hover">
+                    <caption style="display:none;">
+                        产品规格及对应净重、价格
+                    </caption>
+                    <thead>
+                        <tr>
+                            <td>
+                                规格&nbsp;
+                                <i id="guigehelp" data-placement="right" data-original-title="规格说明规格说明" class="icon-question-sign tooltip-icon"></i>
+                            <script type="text/javascript">
+                                $('#guigehelp').tooltip()
+                            </script>
+                            </td>
+                            <td>单体净重</td>
+                            <td>每份净重</td>
+                            <td>每份价格</td>
+                            <td>每500克价格</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4/6</td>
+                            <td>最小133克，最大200克</td>
+                            <td>700克</td>
+                            <td>￥330</td>
+                            <td>￥260</td>
+                        </tr>
+                        <tr>
+                            <td>6/8</td>
+                            <td>最小133克，最大200克</td>
+                            <td>700克</td>
+                            <td>￥330</td>
+                            <td>￥260</td>
+                        </tr>
+                        <tr>
+                            <td>8/12</td>
+                            <td>最小133克，最大200克</td>
+                            <td>700克</td>
+                            <td>￥330</td>
+                            <td>￥260</td>
+                        </tr>
+                        <tr>
+                            <td>13/15</td>
+                            <td>最小133克，最大200克</td>
+                            <td>700克</td>
+                            <td>￥330</td>
+                            <td>￥260</td>
+                        </tr>
+                        <tr>
+                            <td>16/20</td>
+                            <td>最小133克，最大200克</td>
+                            <td>700克</td>
+                            <td>￥330</td>
+                            <td>￥260</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="product-details-cook">
+                <h4 class="product-details-label">
+                    烹饪方法
+                </h4>
+                <ul>
+                    <li>烹饪方法1烹饪方法1烹饪方法1</li>
+                    <li>烹饪方法1烹饪方法1烹饪方法1</li>
+                    <li>烹饪方法1烹饪方法1烹饪方法1</li>
+                    <li>烹饪方法1烹饪方法1烹饪方法1</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div id="product-details-value" class="span5">
+                    <h4 class="product-details-label">
+                        营养价值
+                    </h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>营养元素</td>
+                                <td colspan="2">含量（每100克）</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>能量</td>
+                                <td>127</td>
+                                <td>千卡</td>
+                            </tr>
+                            <tr>
+                                <td>蛋白质</td>
+                                <td>27</td>
+                                <td>克</td>
+                            </tr>
+                            <tr>
+                                <td>脂肪</td>
+                                <td>7</td>
+                                <td>克</td>
+                            </tr>
+                            <tr>
+                                <td>碳水化合物</td>
+                                <td>111</td>
+                                <td>毫克</td>
+                            </tr>
+                            <tr>
+                                <td>饮食纤维素</td>
+                                <td>127</td>
+                                <td>毫克</td>
+                            </tr>
+                            <tr>
+                                <td>胆固醇</td>
+                                <td>54</td>
+                                <td>毫克</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="product-details-other" class="span5">
+                    <h4 class="product-details-label">
+                        其它说明
+                    </h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>说明项目</td>
+                                <td>值</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>运输温度</td>
+                                <td>低于-18℃</td>
+                            </tr>
+                            <tr>
+                                <td>仓储温度</td>
+                                <td>低于-20℃</td>
+                            </tr>
+                            <tr>
+                                <td>保质期</td>
+                                <td>24个月</td>
+                            </tr>
+                            <tr>
+                                <td>解冻说明</td>
+                                <td>请于24小时内食用，不可复冻</td>
+                            </tr>
+                            <tr>
+                                <td>解冻方式</td>
+                                <td>常温</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @*<h2>
+                @Model.Title
+            </h2>
+            <p>
+                <img alt="@Model.Title" src="@Model.ProductImageUrl" />
+            </p>
+            <div id="product-details">
+                <p>
+                    <em>类别：</em>
+                    @Model.Genre.Name
+                </p>
+                <p>
+                    <em>供应商：</em>
+                    @Model.Producer.Name
+                </p>
+                <p>
+                    <em>价格:</em>
+                    @String.Format("{0:F}",Model.Price)
+                </p>
+                <p class="button">
+                    @Html.ActionLink("添加到购物车", "AddToCart", "ShoppingCart", new { id = Model.ProductId },"")
+                </p>
+            </div>
+            <div class="bshare-custom">
+                分享：
+                <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                <a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a>
+                <a title="分享到豆瓣" class="bshare-douban"></a>
+            </div>
+            <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
+            <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+            <script type="text/javascript" charset="utf-8">
+                bShare.addEntry({
+                    summary: "@Request.Url.Host" + ":" + "@Request.Url.Port" + "@Model.ProductImageUrl",
+                    pic: "@Request.Url.Host" + ":" + "@Request.Url.Port" + "@Model.ProductImageUrl"
+                });
+            </script>*@
+        </div>
+    </div>
+    <script type="text/ecmascript">
+        $("a[rel=group]").fancybox({
+            'titlePosition': 'over',
+            'cyclic': true,
+            'centerOnScroll': true,
+            'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                return '<span id="fancybox-title-over">' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+            }
+        });
+    </script>
+    
+
 </div>

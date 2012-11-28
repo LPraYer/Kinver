@@ -2149,7 +2149,7 @@ table [class*=span],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("/Content/themes/bootstrap/images/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -2169,7 +2169,7 @@ table [class*=span],
 .dropdown-menu > li > a:hover > [class*=" icon-"],
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/Content/themes/bootstrap/images/glyphicons-halflings-white.png");
 }
 
 .icon-glass {
@@ -2753,9 +2753,9 @@ table [class*=span],
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top: 4px solid #000000;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  border-top: 5px solid #000000;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   content: "";
 }
 
@@ -2771,7 +2771,7 @@ table [class*=span],
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
+  min-width: 100px;
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
@@ -3771,7 +3771,7 @@ input[type="submit"].btn.btn-mini {
 .nav-header {
   display: block;
   padding: 3px 15px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: bold;
   line-height: 20px;
   color: #999999;
@@ -4194,16 +4194,18 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   display: block;
   float: left;
-  font-size: 18px;
+  font-size: 20px;
+  line-height:20px;
   font-weight:200;
-  font-family: Earth,'Microsoft YaHei';
+  font-family: Earth,'Microsoft YaHei','Helvetica Neue', Helvetica;
   color: dodgerblue;
+  text-rendering:optimizeLegibility;
   text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(255,255,255,.125);
   -webkit-transition: all .2s ease-in-out;
      -moz-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
 	background: url() no-repeat;
-	padding: 0px 0px 0px 10px;
+	padding: 10px 0px 10px 10px;
 }
 
 .navbar .brand:hover {
@@ -4492,7 +4494,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > .dropdown-menu:after {
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 10px;
   display: inline-block;
   border-right: 6px solid transparent;

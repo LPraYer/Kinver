@@ -22,10 +22,7 @@ namespace MVCKinver.Controllers
 
         private List<Product> GetTopSellingProducts(int count)
         {
-            return storeDB.Products
-                .OrderByDescending(a => a.OrderDetails.Count())
-                .Take(count)
-                .ToList();
+            return storeDB.Products.OrderByDescending(a => a.IsHot == 1).Take(count).ToList();
         }
     }
 }

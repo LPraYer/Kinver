@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<MVCKinver.Models.Genre>
 
-<ul id="categories">
-    @foreach (var genre in Model)
-    { 
-        <li>
-            @Html.ActionLink(genre.Name, "Browse", "Store", new { Genre = genre.Name }, null)
-        </li>
-    }
-</ul>
+<div class="nav-left" data-spy="affix" data-offset-top="0">
+    <ul@* id="categories"*@ class="nav nav-tabs nav-stacked">
+        @foreach (var genre in Model)
+        { 
+            <li>
+                @*@Html.ActionLink(genre.Name, "Browse", "Store","http","localhost","test", new { Genre = genre.Name }, null)*@
+                @Html.ActionLink(genre.Name, "Browse", "Store", new { Genre = genre.Name }, null)
+            </li>
+        }
+    </ul>
+</div>

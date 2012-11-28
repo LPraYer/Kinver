@@ -23,18 +23,33 @@ namespace MVCKinver.Controllers
 
         public ActionResult Browse(string genre)
         {
-            var genreModel = storeDB.Genres.Include("Products").Single(g => g.Name == genre);
-            return View(genreModel);
+            if (storeDB.Genres.SingleOrDefault(g => g.Name == genre) != null)
+            {
+                var genreModel = storeDB.Genres.Include("Products").Single(g => g.Name == genre);
+                return View(genreModel);
+            }
+            else
+            {
+                return RedirectToAction("NotFound","Error");
+            }
         }
         //
         // GET: /Store/Detail
 
         public ActionResult Details(int id)
         {
-            var productModel = storeDB.Products.Find(id);
-            productModel.Genre = storeDB.Genres.Find(productModel.GenreId);
-            productModel.Producer = storeDB.Producers.Find(productModel.ProducerId);
-            return View(productModel);
+            
+            if (storeDB.Products.Find(id) != null)
+            {
+                var productModel = storeDB.Products.Find(id);
+                productModel.Genre = storeDB.Genres.Find(productModel.GenreId);
+                productModel.Producer = storeDB.Producers.Find(productModel.ProducerId);
+                return View(productModel);
+            }
+            else
+            {
+                return RedirectToAction("NotFound","Error");
+            }
         }
 
         //

@@ -1,62 +1,4 @@
-﻿*
-{
-	margin: 0px;
-	padding: 0px;
-	border: none;
-}
-
-body
-{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	background-color: #FBF9EF;
-}
-
-#container
-{
-	float: left;
-}
-
-#header
-{
-	float: left;
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-#header h1
-{
-	font-size: 18px;
-	float: left;
-	background: url(/content/Images/logo.png) no-repeat;
-	padding: 0px 0px 0px 100px;
-}
-
-#promotion
-{
-    height: 600px;
-	margin-left:0;
-    margin-right:0;
-	background: url(/content/Images/hero-page.jpg) center 60px,0,0,0 no-repeat ;
-    display:block;
-}
-
-ul li a
-{
-	font-size: 16px;
-}
-
-#main
-{
-    width:auto;
-}
-
-ul
-{
-	list-style-type: square;
-	margin-left: 25px;
-	font-size: 14px;
-}
+﻿
 
 ul#product-list
 {
@@ -66,7 +8,6 @@ ul#product-list
 
 ul#product-list li
 {
-	height: 400px;
 	width: 300px;
 	float: left;
 	margin: 10px;
@@ -113,17 +54,7 @@ ul#product-list li a span
 	color: #fff !important;
 }
 
-#footer
-{
-    margin-top:30px;
-    background-color:black;
-	clear: both;
-	padding: 10px;
-	text-align: right;
-	border-top: 1px dotted #8A8575;
-	font-family: Constantia, Georgia, serif;
-    color:dodgerblue;
-}
+
 
 /******************** Top Navigation ************************/
 ul#navlist
@@ -157,25 +88,10 @@ ul#navlist li a:hover
 
 /********************* End top navigation ***************************/
 
-p
-{
-	margin-bottom: 15px;
-	margin-top: 0px;
-}
-
-h2
-{
-	color: #5e5b54;
-}
-
-h3
-{
-	color: #9B9993;
-}
 
 a:link, a:visited
 {
-	color: #F6855E;
+	color: dodgerblue;
 	text-decoration: none;
 }
 
@@ -189,43 +105,9 @@ a:active
 {
 	color: #006633;
 	text-decoration: none;
-	font-weight: bold;
 }
 
 /***************************** sidebar navigation ****************************/
-
-#categories
-{
-	font-family: Constantia, Georgia, serif;
-	list-style-type: none;
-	border-right: #5d5a53 1px dotted;
-	padding-right: 10px;
-	margin: 0 25px 0 0;
-	float: left;
-}
-
-#categories a:link, #categories a:visited
-{
-	color: #9B9993;
-	text-decoration: none;
-}
-
-#categories a:hover
-{
-	color: #F46739;
-}
-
-div#product-details p
-{
-	margin-bottom: 5px;
-	color: #5e5b54;
-	font-weight: bold;
-}
-
-p em
-{
-	color: #9b9993;
-}
 
 /* Form styles */
 legend
@@ -275,41 +157,6 @@ input[type=text], input[type=password], select
 .validation-summary-valid {
     display: none;
 }
-
-/* Tables */
-table
-{
-	border: 1px solid #000;
-	border-collapse: collapse;
-	color: #666666;
-	min-width: 500px;
-	width: 100%;
-}
-
-tr
-{
-	border: 1px solid #000;
-	line-height: 25px;
-}
-
-th
-{
-	background-color: #9b9993;
-	color: #000;
-	font-size: 13px;
-	text-align: left;
-}
-
-th, td
-{
-	padding-left: 5px;
-}
-
-tr:hover
-{
-	background-color: #fff;
-}
-
 
 /*
     Added for Kinver
@@ -365,3 +212,89 @@ tr:hover
     width:170px;
     height:70px;
 }
+
+#kinvernav {
+    float:right;
+}
+
+.container-margin-top {
+    margin-top:50px;
+}
+
+#footer-copyright {
+    color:gray;
+}
+
+#footer-links,#footer-copyright {
+    text-align:center;
+    line-height:24px;
+}
+
+    #footer-links a {
+        margin:20px,10px;
+        color:dodgerblue;
+    }
+
+    #footer-links span {
+        margin:10px;
+    }
+
+    #footer-copyright span {
+        margin:5px;
+    }
+
+.nav-left {
+    width:inherit;
+}
+
+.carousel-control {
+    background-color:transparent;
+    border:0;
+    font-size:120px;
+    margin-top:0;
+    text-shadow:0 1px 1px rgba(0,0,0,0.4);
+    color:gray;
+}
+
+#footer
+{
+    margin-top:30px;
+    background-color:white;
+	clear: both;
+	padding: 10px;
+	text-align: right;
+	font-family: 'Microsoft YaHei';
+}
+
+#promotion1,#promotion2,#promotion3,#promotion
+{
+    height: 550px;
+	margin-left:0;
+    margin-right:0;
+	background: url(/content/Images/hero-page.jpg) center 20px,0,0,0 no-repeat ;
+}
+
+
+/*产品详情页样式*/
+
+h4.product-details-label {
+    margin-top:30px;
+    margin-bottom:20px;
+    color:gray;
+}
+
+#product-details-services {
+    float:right;
+}
+
+#product-details-intro {
+    margin-top:20px;
+    margin-bottom:40px;
+}
+
+.tooltip-icon {
+    cursor:pointer;
+}
+
+
+

@@ -33,7 +33,8 @@ namespace MVCKinver
 
         protected void Application_Start()
         {
-            System.Data.Entity.Database.SetInitializer(new MVCKinver.Models.SampleData());
+            var x = new MVCKinver.Models.SampleData();
+            System.Data.Entity.Database.SetInitializer(x);
             AreaRegistration.RegisterAllAreas();
 
             // 默认情况下对 Entity Framework 使用 LocalDB
