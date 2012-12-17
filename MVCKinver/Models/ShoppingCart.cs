@@ -105,10 +105,11 @@ namespace MVCKinver.Models
         public decimal GetTotal()
         { 
             //统计产品总价
-            decimal? total = (from cartItems in storeDB.Carts
-                              where cartItems.CartId == ShoppingCartId
-                              select (int?)cartItems.Count * cartItems.Product.Price).Sum();
-            return total ?? decimal.Zero;
+            //decimal? total = (from cartItems in storeDB.Carts
+            //                  where cartItems.CartId == ShoppingCartId
+            //                  select (int?)cartItems.Count * cartItems.Product.Price).Sum();
+            //return total ?? decimal.Zero;
+            return 0;
         }
 
         public int CreateOrder(Order order)
@@ -122,11 +123,11 @@ namespace MVCKinver.Models
                 {
                     ProductId = item.ProductId,
                     OrderId = order.OrderId,
-                    UnitPrice = item.Product.Price,
+                    //UnitPrice = item.Product.Price,
                     Quantity = item.Count
                 };
                 //设置购物车的订单总价
-                orderTotal += (item.Count * item.Product.Price);
+               // orderTotal += (item.Count * item.Product.Price);
                 storeDB.OrderDetails.Add(orderDetail);
             }
             //设置订单总价

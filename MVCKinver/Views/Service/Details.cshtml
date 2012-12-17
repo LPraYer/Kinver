@@ -1,15 +1,535 @@
 ﻿@model MVCKinver.Models.Service
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title + " - 服务介绍 | 景悦锦辰";
 }
-<div class="container container-margin-top">
 
-    <h2>@Model.Title</h2>
-    <p>
-        @Model.KeyDescription
-    </p>
-    <p>
-        @Model.PlusDescription
-    </p>
+<style>
+    /*礼盒*/
+    .GiftBoxes {
+        margin-top:60px;
+    }
+
+    #LiHeContent h3 {
+        font-size:48px;
+        font-family:Georgia;
+        color:black;
+        text-shadow:1px 1px 1px #ddd;
+        margin-bottom:30px;
+        font-weight:normal;
+    }
+
+    .LiHePrice {
+        color:#333;
+        text-shadow:1px 1px 1px #ddd;
+        font-family:Georgia;
+        font-size:24px;
+        padding-bottom:30px;
+    }
+
+    #LiHeContent td:first-child {
+        padding-left:20px;
+    }
+
+    #LiHeContent td:last-child {
+        padding-right:20px;
+        text-align:right;
+    }
+
+    #LiHeContent tbody td:first-child {
+        color:#1b4285;
+    }
+
+    #LiHeContent tbody td:last-child {
+        color:gray;
+    }
+
+    #LiHeContent thead td {
+        color:gray;
+    }
+
+    .title {
+    text-align:right;
+    padding-right:50px;
+    background-position:80% top;
+    background-repeat:no-repeat;
+    }
+
+    #K9 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Black.png");
+    }
+
+    #K8 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Red.png");
+    }
+
+    #K7 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Blue.png");
+    }
+
+    #K6 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Green.png");
+    }
+
+    #K5 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Purple.png");
+    }
+
+    #K3 .title {
+    background-image:url("/Content/Images/WaterColorImages/WaterColor_Gold.png");
+    }
+
+    #ContactForm {
+        display:none;
+    }
+
+    #SubmitMessageArea {
+        color:#346217;
+    }
+
+        #SubmitMessageArea i {
+            opacity:0.4;
+        }
+/*礼盒 end*/
+    
+</style>
+
+
+<div class="container container-margin-top">
+    <div style="margin-bottom:30px;">
+        <img src="@Url.Content("~/Content/Images/ServiceImages/Small/" + Model.ServiceImageUrl)" />
+        <h2 style="display:inline;margin-left:20px;font-weight:normal;">@Model.Title</h2>
+    </div>
+    
+    
+    
+    @switch (Model.ServiceId)
+    {
+        //礼盒业务//////////////////////////////////////////////////////////////////////////////////////////////
+        case 1:
+            <h5>
+                以“礼”服人，选择景悦锦辰
+            </h5>
+            <p>
+                景悦锦辰为您提供多样化的礼盒和礼券服务，您可以从以下搭配礼盒中任选，亦可以个性化选择产品组合进行定制。
+            </p>
+            <p>
+                我们会为您提供礼券，您发放给您的客户或员工后，他们可以通过礼券上的联系方式联系我们，我们会免费将礼盒配送到客户府上。
+            </p>
+            <br />
+            <div id="ContactForm">
+                @{Html.RenderAction("Index", "Contact");}
+            </div>
+            <p>
+                <a id="ContactButton" class="btn">礼盒礼券业务详询</a>
+            </p>
+            <p>
+                <span id="SubmitMessageArea"></span>
+            </p>
+            <div id="LiHeContent">
+                <div id="K9" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K9礼盒
+                            </h3>
+                            <p class="LiHePrice">￥2988</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口超大帝王蟹一只</td>
+                                    <td>2000克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大整虾两盒</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口波士顿大龙虾两只</td>
+                                    <td>1500克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口特级野生大鲍鱼四头</td>
+                                    <td>500克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口安格斯牛仔骨</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="color:#346217;text-align:left;">*赠送意大利原产圣诺橄榄油（750ml装）两瓶</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+               @{//K9结束
+                 }
+
+
+                <div id="K8" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K8礼盒
+                            </h3>
+                            <p class="LiHePrice">￥1998</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口超大帝王蟹一只</td>
+                                    <td>2000克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大虾仁两袋</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口波士顿大龙虾两只</td>
+                                    <td>1500克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口安格斯牛仔骨</td>
+                                    <td>500克</td>
+                                </tr>
+                                <tr>
+                                    <td>挪威进口三文鱼切段</td>
+                                    <td>500克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+               @{//K8结束
+                 }
+
+
+                <div id="K7" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K7礼盒
+                            </h3>
+                            <p class="LiHePrice">￥1598</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口超大帝王蟹一只</td>
+                                    <td>2000克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大虾仁两袋</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口波士顿龙虾两只</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td>挪威进口三文鱼切段</td>
+                                    <td>500克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+               @{//K7结束
+                 }
+
+
+
+                <div id="K6" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K6礼盒
+                            </h3>
+                            <p class="LiHePrice">￥998</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口帝王蟹一只</td>
+                                    <td>1500克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大虾仁两袋</td>
+                                    <td>1000克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口波士顿龙虾一只</td>
+                                    <td>500克</td>
+                                </tr>
+                                <tr>
+                                    <td>挪威进口三文鱼切段</td>
+                                    <td>500克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+                @{//K6结束
+                 }
+
+
+
+                <div id="K5" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K5礼盒
+                            </h3>
+                            <p class="LiHePrice">￥798</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口帝王蟹一只</td>
+                                    <td>1250克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大虾仁一袋</td>
+                                    <td>500克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口波士顿龙虾一只</td>
+                                    <td>350克</td>
+                                </tr>
+                                <tr>
+                                    <td>挪威进口三文鱼切段</td>
+                                    <td>500克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+               @{//K5结束
+                 }
+
+
+                <div id="K3" class="row GiftBoxes">
+                    <div class="span6">
+                        <div class="title">
+                            <h3>
+                                K3礼盒
+                            </h3>
+                            <p class="LiHePrice">￥598</p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>包含品种</td>
+                                    <td>净重</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>智利进口帝王蟹一只</td>
+                                    <td>1250克</td>
+                                </tr>
+                                <tr>
+                                    <td>越南进口野生黑虎虾特大虾仁一袋</td>
+                                    <td>500克</td>
+                                </tr>
+                                <tr>
+                                    <td>美国进口蓝口贝一袋</td>
+                                    <td>500克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+               @{//K3结束
+                 }
+
+
+            </div>  
+                  break;
+
+
+        //餐厅配送业务//////////////////////////////////////////////////////////////////////////////////////////////
+        case 2:
+            <h5>
+                为客户提供最佳美食，景悦锦辰与您一路同行
+            </h5>
+            <p>
+                景悦锦辰为北京5环以内地区的高档餐厅提供各类食材的供应服务。我们重视食材的质优价廉，更关注食材的健康和安全，所有产品均为进口地检疫合格，更高标准，更佳品质，让您和您的客人双重满意。
+            </p>
+            <br />
+            <div id="ContactForm">
+                @{Html.RenderAction("Index", "Contact");}
+            </div>
+            <p>
+                <a id="ContactButton" class="btn">餐厅配送业务详询</a>
+            </p>
+            <p>
+                <span id="SubmitMessageArea"></span>
+            </p>
+            <div id="CantingContent">
+                <h3 style="text-align:center;font-family:STSong;font-size:48px;font-weight:normal;color:#333;margin-top:50px;margin-bottom:50px;">
+                    我们为北京最好的餐厅供应食材
+                </h3>
+                <p style="text-align:center;font-size:16px;">
+                    欢迎您到以下餐厅品尝美食，或加入他们，成为我们的客户！
+                </p>
+                <div id="canting1" class="row" style="margin-top:80px;margin-bottom:50px;">
+                    <div class="span3" style="text-align:center;">
+                        <a><img src="@Url.Content("~/Content/Images/GuestsImages/GunghoPizza_Jade.jpg")" class="img-circle" /></a>
+                    </div>
+                    <div class="span9">
+                        <p style="font-size:24px;font-family:Georgia;line-height:48px;color:#666;">
+                            <img src="@Url.Content("~/Content/Images/QuoteStart.png")" />Kinver supplies us the BEST material of food like Tuna and Salmon, they made our pizza and salad better!<img src="@Url.Content("~/Content/Images/QuoteEnd.png")" />
+                        </p>
+                        <p style="font-size:24px;line-height:48px;color:#999;">
+                                —— <a href="http://gunghopizza.com" target="_blank">Jade，叫板!披萨</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="canting2" class="row" style="margin-top:80px;margin-bottom:50px;">
+                    <div class="span3" style="text-align:center;">
+                        <a><img src="@Url.Content("~/Content/Images/GuestsImages/GunghoPizza_John.jpg")" class="img-circle" /></a>
+                    </div>
+                    <div class="span9">
+                        <p style="font-size:24px;font-family:Georgia;line-height:48px;color:#666;">
+                            <img src="@Url.Content("~/Content/Images/QuoteStart.png")" />Kinver supplies us the BEST material of food like Tuna and Salmon, they made our pizza and salad better!<img src="@Url.Content("~/Content/Images/QuoteEnd.png")" />
+                        </p>
+                        <p style="font-size:24px;line-height:48px;color:#999;">
+                             —— <a href="http://gunghopizza.com" target="_blank">John，叫板!披萨</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="canting3" class="row" style="margin-top:80px;margin-bottom:50px;">
+                    <div class="span3" style="text-align:center;">
+                        <a><img src="@Url.Content("~/Content/Images/GuestsImages/GunghoPizza_Jade.jpg")" class="img-circle" /></a>
+                    </div>
+                    <div class="span9">
+                        <p style="font-size:24px;font-family:Georgia;line-height:48px;color:#666;">
+                            <img src="@Url.Content("~/Content/Images/QuoteStart.png")" />Kinver supplies us the BEST material of food like Tuna and Salmon, they made our pizza and salad better!<img src="@Url.Content("~/Content/Images/QuoteEnd.png")" />
+                        </p>
+                        <p style="font-size:24px;line-height:48px;color:#999;">
+                             —— <a href="http://gunghopizza.com" target="_blank">Jade，叫板!披萨</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="canting4" class="row" style="margin-top:80px;margin-bottom:50px;">
+                    <div class="span3" style="text-align:center;">
+                        <a><img src="@Url.Content("~/Content/Images/GuestsImages/GunghoPizza_John.jpg")" class="img-circle" /></a>
+                    </div>
+                    <div class="span9">
+                        <p style="font-size:24px;font-family:Georgia;line-height:48px;color:#666;">
+                            <img src="@Url.Content("~/Content/Images/QuoteStart.png")" />Kinver supplies us the BEST material of food like Tuna and Salmon, they made our pizza and salad better!<img src="@Url.Content("~/Content/Images/QuoteEnd.png")" />
+                        </p>
+                        <p style="font-size:24px;line-height:48px;color:#999;">
+                             —— <a href="http://gunghopizza.com" target="_blank">Jade，叫板!披萨</a>
+                        </p>
+                    </div>
+                </div>
+                
+            </div>        
+    
+    
+                  break;
+
+        case 3:
+            <h5>
+                为佳人，选择最棒的食材
+            </h5>
+            <p>
+                景悦锦辰为北京5环以内地区的家庭提供各类食材的供应服务。
+            </p>
+            <p>
+                您可以通过网站或客服电话订购景悦产品，24小时内指定时段配送到家，给您和您的爱人一份完美的晚餐。
+            </p>
+            <p>
+                为每一个中国家庭提供营养安全的食材、让每一个中国孩子健康快乐的成长是我们最初的愿景，也是我们矢志不渝的方向。我们特别提供以下儿童成长定期配送方案，您可以根据需要选择，让景悦的优质食材伴随您的孩子茁壮成长！
+            </p>
+            
+            <br />
+            <div id="ContactForm">
+                @{Html.RenderAction("Index", "Contact");}
+            </div>
+            <p>
+                <a id="ContactButton" class="btn">家庭配送业务详询</a>
+            </p>
+            <p>
+                <span id="SubmitMessageArea"></span>
+            </p>
+    
+    
+                  break;
+    }
+
 </div>
+<script src="../../Scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+
+        //垂询表单的展开和收起
+        $("#ContactButton").click(function () {
+            $("#ContactButton").hide();
+            $("#SubmitMessageArea").hide();
+            $("#ContactForm").slideDown("slow");
+        });
+        $("#SlideUpForm").click(function () {
+            $("#ContactForm").slideUp("normal", function () {
+                $("#ContactButton").show();
+            });
+        });
+
+        //提交完成后的反馈
+        $("#SubmitMessageArea").html($("#SubmitMessage").val());
+
+        //垂询表单对应服务
+        $("#Service").val(@Model.ServiceId.ToString());
+        $("#ServiceTitle").html("@Model.Title");
+    });
+</script>

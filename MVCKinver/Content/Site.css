@@ -1,4 +1,8 @@
 ﻿
+h3 {
+    color:#888;
+}
+
 
 ul#product-list
 {
@@ -35,23 +39,6 @@ ul#product-list li a span
 {
 	color: #F6855E;
 	font-weight: bold;
-}
-
-.button, input[type=submit]
-{
-	clear: both;
-	display: inline-block;
-	padding: 5px;
-	margin-top: 10px; 
-	border: 1px;
-	background: #5e5b54;
-	color: #fff;
-	font-weight: bold;
-}
-
-.button a
-{
-	color: #fff !important;
 }
 
 
@@ -110,29 +97,9 @@ a:active
 /***************************** sidebar navigation ****************************/
 
 /* Form styles */
-legend
-{
-	padding: 10px;
-	font-weight: bold;
-}
-
-fieldset
-{
-	border: #9b9993 1px solid;
-	padding: 0 10px;
-	margin-bottom: 10px;
-	clear: left;
-}
-
 div.editor-field
 {
 	margin-bottom: 10px;
-}
-
-input[type=text], input[type=password], select
-{
-	border: 1px solid #8A8575;
-	width: 300px;
 }
 
 /* Styles for validation helpers */
@@ -163,6 +130,10 @@ input[type=text], input[type=password], select
     Added date:20121123
 */
 
+#main {
+    min-height:500px;
+}
+
 #services h3,
 #hot-products h3,
 #restaurants h3
@@ -186,7 +157,11 @@ input[type=text], input[type=password], select
 }
 
 #services img {
-    width:inherit;
+    width:auto;
+}
+
+#services .span3 {
+    text-align:center;
 }
 
 #hot-products .title {
@@ -266,12 +241,73 @@ input[type=text], input[type=password], select
 	font-family: 'Microsoft YaHei';
 }
 
-#promotion1,#promotion2,#promotion3,#promotion
+#promotion {
+    background-image:url(/content/Images/loading.gif);
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+#promotion1, #promotion2, #promotion3 {
+    border-bottom:1px dotted #aaa;
+}
+
+#promotion1
 {
     height: 550px;
 	margin-left:0;
     margin-right:0;
-	background: url(/content/Images/hero-page.jpg) center 20px,0,0,0 no-repeat ;
+	background: url(/content/Images/hero-page-one.jpg) center 20px,0,0,0 no-repeat ;
+    text-align:center;
+    
+}
+
+    #promotion1 a {
+      margin-top:400px;
+      background-color:rgba(255,255,255, 0.70);
+    background-image:none;
+    text-shadow:1px 1px 1px #eee;
+    color:#390505;
+    -webkit-transition:all 0.2s ease-in-out;
+    }
+
+        #promotion1 a:hover {
+            background-color:rgba(255,255,255,1);
+        }
+
+#promotion2 {
+    height: 550px;
+	margin-left:0;
+    margin-right:0;
+	background: url(/content/Images/hero-page-two.jpg) center 20px,0,0,0 no-repeat;
+    text-align:left;
+}
+
+    #promotion2 .contents {
+        margin-left:50px;
+        margin-top:100px;
+    }
+
+    #promotion2 a {
+      margin-top:50px;
+      background-color:rgba(255,255,255, 0.70);
+    background-image:none;
+    text-shadow:1px 1px 1px #eee;
+    color:#390505;
+    -webkit-transition:all 0.2s ease-in-out;
+    }
+
+        #promotion2 a:hover {
+            background-color:rgba(255,255,255,1);
+        }
+
+#promotion3
+{
+    height: 550px;
+	margin-left:0;
+    margin-right:0;
+	/*background: url(/content/Images/hero-page.jpg) center 20px,0,0,0 no-repeat ;*/
+    text-align:center;
+    
 }
 
 
@@ -285,7 +321,12 @@ h4.product-details-label {
 
 #product-details-services {
     float:right;
+    margin-top:10px;
 }
+
+    #product-details-services img {
+        margin-left:10px;
+    }
 
 #product-details-intro {
     margin-top:20px;
@@ -296,5 +337,49 @@ h4.product-details-label {
     cursor:pointer;
 }
 
+.nav-stacked > li > span {
+  margin-right: 0;
+}
 
+.nav-tabs.nav-stacked > li > span {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+
+.nav-tabs.nav-stacked > li:first-child > span {
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+
+.left-nav-header {
+    display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #666;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.nav-left .icon-chevron-right {
+    float:right;
+    margin-top:12px;
+    margin-right:6px;
+}
+
+.opacity-point-twentyfive {
+    opacity:.25;
+}
+
+#product-details-images-xing {
+    margin:10px;
+}
 

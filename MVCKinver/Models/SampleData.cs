@@ -10,429 +10,333 @@ namespace MVCKinver.Models
     {
         protected override void Seed(KinverEntities context)
         {
+            #region 分类genre
             var genres = new List<Genre>
             {
-                new Genre { Name = "Rock" },
-                new Genre { Name = "Jazz" },
-                new Genre { Name = "Metal" },
-                new Genre { Name = "Alternative" },
-                new Genre { Name = "Disco" },
-                new Genre { Name = "Blues" },
-                new Genre { Name = "Latin" },
-                new Genre { Name = "Reggae" },
-                new Genre { Name = "Pop" },
-                new Genre { Name = "Classical" }
+                new Genre { 
+                    GenreId = 1,
+                    Name = "肉类" , 
+                    Description = "进口肉类" ,
+                    Level = 0 , 
+                    FatherGenreId = 0,
+                },
+                new Genre { 
+                    GenreId =2,
+                    Name = "水产" , 
+                    Description = "进口水产" ,
+                    Level = 0 , 
+                    FatherGenreId = 0 },
+                new Genre { 
+                    GenreId =3,
+                    Name = "配料" , 
+                    Description = "进口配料" ,
+                    Level = 0 , 
+                    FatherGenreId = 0 },
+                new Genre { 
+                    GenreId =4,
+                    Name = "牛肉" , 
+                    Description = "进口牛肉" ,
+                    Level = 1 , 
+                    FatherGenreId = 1,
+                    GenreUrl = "Beaf"
+                },
+                new Genre { 
+                    GenreId =5,
+                    Name = "猪肉" , 
+                    Description = "进口猪肉" ,
+                    Level = 1 , 
+                    FatherGenreId = 1,
+                    GenreUrl = "Pork"
+                },
+                new Genre { 
+                    GenreId =6,
+                    Name = "羊肉" , 
+                    Description = "进口羊肉" ,
+                    Level = 1 , 
+                    FatherGenreId = 1,
+                    GenreUrl = "Mutton"
+                },
+                new Genre { 
+                    GenreId =7,
+                    Name = "鱼" , 
+                    Description = "进口鱼" ,
+                    Level = 1 , 
+                    FatherGenreId = 2,
+                    GenreUrl = "Fishes"
+                },
+                new Genre { 
+                    GenreId =8,
+                    Name = "虾" , 
+                    Description = "进口虾" ,
+                    Level = 1 , 
+                    FatherGenreId = 2,
+                    GenreUrl = "Shrimps"
+                },
+                new Genre { 
+                    GenreId =9,
+                    Name = "蟹" , 
+                    Description = "进口蟹" ,
+                    Level = 1 , 
+                    FatherGenreId = 2,
+                    GenreUrl = "Crabs"
+                },
+                new Genre { 
+                    GenreId =10,
+                    Name = "贝壳" , 
+                    Description = "进口贝壳" ,
+                    Level = 1 , 
+                    FatherGenreId = 2,
+                    GenreUrl = "Shells"
+                },
+                new Genre { 
+                    GenreId =11,
+                    Name = "油料" , 
+                    Description = "进口油料" ,
+                    Level = 1 , 
+                    FatherGenreId = 3,
+                    GenreUrl = "Oils"
+                },
+                new Genre { 
+                    GenreId =12,
+                    Name = "奶酪" , 
+                    Description = "进口奶酪" ,
+                    Level = 1 , 
+                    FatherGenreId = 3,
+                    GenreUrl = "Cheese"
+                },
             };
+            genres.ForEach(a => context.Genres.Add(a));
+            #endregion
 
+            #region 供应商Producer
             var producers = new List<Producer>
             {
-                new Producer { Name = "Aaron Copland & London Symphony Orchestra" },
-                new Producer { Name = "Aaron Goldberg" },
-                new Producer { Name = "AC/DC" },
-                new Producer { Name = "Accept" },
-                new Producer { Name = "Adrian Leaper & Doreen de Feis" },
-                new Producer { Name = "Aerosmith" },
-                new Producer { Name = "Aisha Duo" },
-                new Producer { Name = "Alanis Morissette" },
-                new Producer { Name = "Alberto Turco & Nova Schola Gregoriana" },
-                new Producer { Name = "Alice In Chains" },
-                new Producer { Name = "Amy Winehouse" },
-                new Producer { Name = "Anita Ward" },
-                new Producer { Name = "Antônio Carlos Jobim" },
-                new Producer { Name = "Apocalyptica" },
-                new Producer { Name = "Audioslave" },
-                new Producer { Name = "Barry Wordsworth & BBC Concert Orchestra" },
-                new Producer { Name = "Berliner Philharmoniker & Hans Rosbaud" },
-                new Producer { Name = "Berliner Philharmoniker & Herbert Von Karajan" },
-                new Producer { Name = "Billy Cobham" },
-                new Producer { Name = "Black Label Society" },
-                new Producer { Name = "Black Sabbath" },
-                new Producer { Name = "Boston Symphony Orchestra & Seiji Ozawa" },
-                new Producer { Name = "Britten Sinfonia, Ivor Bolton & Lesley Garrett" },
-                new Producer { Name = "Bruce Dickinson" },
-                new Producer { Name = "Buddy Guy" },
-                new Producer { Name = "Caetano Veloso" },
-                new Producer { Name = "Cake" },
-                new Producer { Name = "Calexico" },
-                new Producer { Name = "Cássia Eller" },
-                new Producer { Name = "Chic" },
-                new Producer { Name = "Chicago Symphony Orchestra & Fritz Reiner" },
-                new Producer { Name = "Chico Buarque" },
-                new Producer { Name = "Chico Science & Nação Zumbi" },
-                new Producer { Name = "Choir Of Westminster Abbey & Simon Preston" },
-                new Producer { Name = "Chris Cornell" },
-                new Producer { Name = "Christopher O'Riley" },
-                new Producer { Name = "Cidade Negra" },
-                new Producer { Name = "Cláudio Zoli" },
-                new Producer { Name = "Creedence Clearwater Revival" },
-                new Producer { Name = "David Coverdale" },
-                new Producer { Name = "Deep Purple" },
-                new Producer { Name = "Dennis Chambers" },
-                new Producer { Name = "Djavan" },
-                new Producer { Name = "Donna Summer" },
-                new Producer { Name = "Dread Zeppelin" },
-                new Producer { Name = "Ed Motta" },
-                new Producer { Name = "Edo de Waart & San Francisco Symphony" },
-                new Producer { Name = "Elis Regina" },
-                new Producer { Name = "English Concert & Trevor Pinnock" },
-                new Producer { Name = "Eric Clapton" },
-                new Producer { Name = "Eugene Ormandy" },
-                new Producer { Name = "Faith No More" },
-                new Producer { Name = "Falamansa" },
-                new Producer { Name = "Foo Fighters" },
-                new Producer { Name = "Frank Zappa & Captain Beefheart" },
-                new Producer { Name = "Fretwork" },
-                new Producer { Name = "Funk Como Le Gusta" },
-                new Producer { Name = "Gerald Moore" },
-                new Producer { Name = "Gilberto Gil" },
-                new Producer { Name = "Godsmack" },
-                new Producer { Name = "Gonzaguinha" },
-                new Producer { Name = "Göteborgs Symfoniker & Neeme Järvi" },
-                new Producer { Name = "Guns N' Roses" },
-                new Producer { Name = "Gustav Mahler" },
-                new Producer { Name = "Incognito" },
-                new Producer { Name = "Iron Maiden" },
-                new Producer { Name = "James Levine" },
-                new Producer { Name = "Jamiroquai" },
-                new Producer { Name = "Jimi Hendrix" },
-                new Producer { Name = "Joe Satriani" },
-                new Producer { Name = "Jorge Ben" },
-                new Producer { Name = "Jota Quest" },
-                new Producer { Name = "Judas Priest" },
-                new Producer { Name = "Julian Bream" },
-                new Producer { Name = "Kent Nagano and Orchestre de l'Opéra de Lyon" },
-                new Producer { Name = "Kiss" },
-                new Producer { Name = "Led Zeppelin" },
-                new Producer { Name = "Legião Urbana" },
-                new Producer { Name = "Lenny Kravitz" },
-                new Producer { Name = "Les Arts Florissants & William Christie" },
-                new Producer { Name = "London Symphony Orchestra & Sir Charles Mackerras" },
-                new Producer { Name = "Luciana Souza/Romero Lubambo" },
-                new Producer { Name = "Lulu Santos" },
-                new Producer { Name = "Marcos Valle" },
-                new Producer { Name = "Marillion" },
-                new Producer { Name = "Marisa Monte" },
-                new Producer { Name = "Martin Roscoe" },
-                new Producer { Name = "Maurizio Pollini" },
-                new Producer { Name = "Mela Tenenbaum, Pro Musica Prague & Richard Kapp" },
-                new Producer { Name = "Men At Work" },
-                new Producer { Name = "Metallica" },
-                new Producer { Name = "Michael Tilson Thomas & San Francisco Symphony" },
-                new Producer { Name = "Miles Davis" },
-                new Producer { Name = "Milton Nascimento" },
-                new Producer { Name = "Mötley Crüe" },
-                new Producer { Name = "Motörhead" },
-                new Producer { Name = "Nash Ensemble" },
-                new Producer { Name = "Nicolaus Esterhazy Sinfonia" },
-                new Producer { Name = "Nirvana" },
-                new Producer { Name = "O Terço" },
-                new Producer { Name = "Olodum" },
-                new Producer { Name = "Orchestra of The Age of Enlightenment" },
-                new Producer { Name = "Os Paralamas Do Sucesso" },
-                new Producer { Name = "Ozzy Osbourne" },
-                new Producer { Name = "Page & Plant" },
-                new Producer { Name = "Paul D'Ianno" },
-                new Producer { Name = "Pearl Jam" },
-                new Producer { Name = "Pink Floyd" },
-                new Producer { Name = "Queen" },
-                new Producer { Name = "R.E.M." },
-                new Producer { Name = "Raul Seixas" },
-                new Producer { Name = "Red Hot Chili Peppers" },
-                new Producer { Name = "Roger Norrington, London Classical Players" },
-                new Producer { Name = "Royal Philharmonic Orchestra & Sir Thomas Beecham" },
-                new Producer { Name = "Rush" },
-                new Producer { Name = "Santana" },
-                new Producer { Name = "Scholars Baroque Ensemble" },
-                new Producer { Name = "Scorpions" },
-                new Producer { Name = "Sergei Prokofiev & Yuri Temirkanov" },
-                new Producer { Name = "Sir Georg Solti & Wiener Philharmoniker" },
-                new Producer { Name = "Skank" },
-                new Producer { Name = "Soundgarden" },
-                new Producer { Name = "Spyro Gyra" },
-                new Producer { Name = "Stevie Ray Vaughan & Double Trouble" },
-                new Producer { Name = "Stone Temple Pilots" },
-                new Producer { Name = "System Of A Down" },
-                new Producer { Name = "Temple of the Dog" },
-                new Producer { Name = "Terry Bozzio, Tony Levin & Steve Stevens" },
-                new Producer { Name = "The 12 Cellists of The Berlin Philharmonic" },
-                new Producer { Name = "The Black Crowes" },
-                new Producer { Name = "The Cult" },
-                new Producer { Name = "The Doors" },
-                new Producer { Name = "The King's Singers" },
-                new Producer { Name = "The Police" },
-                new Producer { Name = "The Posies" },
-                new Producer { Name = "The Rolling Stones" },
-                new Producer { Name = "The Who" },
-                new Producer { Name = "Tim Maia" },
-                new Producer { Name = "Ton Koopman" },
-                new Producer { Name = "U2" },
-                new Producer { Name = "UB40" },
-                new Producer { Name = "Van Halen" },
-                new Producer { Name = "Various Producers" },
-                new Producer { Name = "Velvet Revolver" },
-                new Producer { Name = "Vinícius De Moraes" },
-                new Producer { Name = "Wilhelm Kempff" },
-                new Producer { Name = "Yehudi Menuhin" },
-                new Producer { Name = "Yo-Yo Ma" },
-                new Producer { Name = "Zeca Pagodinho" }
+                new Producer { Name = "景悦锦辰" },
+                new Producer { Name = "京申" }
             };
+            producers.ForEach(a => context.Producers.Add(a));
+            #endregion
+
+            #region Area
+            var areas = new List<Area>
+            {
+                new Area {Name = "挪威"},
+                new Area {Name = "越南"},
+                new Area {Name = "阿拉斯加"},
+                new Area {Name = "伊朗"}
+            };
+            areas.ForEach(a => context.Areas.Add(a));
+            #endregion
+
+            #region Dishes
+            var dishes = new List<Dish> 
+            { 
+                new Dish {Content = "香油帝王蟹",ProductId = 1},
+                new Dish {Content = "爆炒黑虎虾,做法配料什么的看需要设计字段",ProductId = 2},
+                new Dish {Content = "蒜香黑虎虾",ProductId = 2}
+            };
+            dishes.ForEach(a => context.Dishes.Add(a));
+            #endregion
+
+            #region ProductImages
+            var productimages = new List<ProductImage>
+            {
+                new ProductImage {ProductId = 1,ProductImageUrl = "Crab_2.jpg",ProductImageTitle = "帝王蟹2"},
+                new ProductImage {ProductId = 1,ProductImageUrl = "Crab_3.jpg",ProductImageTitle = "帝王蟹3"},
+                new ProductImage {ProductId = 1,ProductImageUrl = "Crab_4.jpg",ProductImageTitle = "帝王蟹4"},
+                new ProductImage {ProductId = 2,ProductImageUrl = "BlackTigerShrimp_2.jpg",ProductImageTitle = "黑虎虾2"},
+                new ProductImage {ProductId = 2,ProductImageUrl = "BlackTigerShrimp_3.jpg",ProductImageTitle = "黑虎虾3"},
+                new ProductImage {ProductId = 2,ProductImageUrl = "BlackTigerShrimp_4.jpg",ProductImageTitle = "黑虎虾4"},
+                new ProductImage {ProductId = 2,ProductImageUrl = "BlackTigerShrimp_5.jpg",ProductImageTitle = "黑虎虾5"}
+            };
+            productimages.ForEach(a => context.ProductImages.Add(a));
+            #endregion
+
+            #region ProductOtherInfoes
+            var productotherinfoes = new List<ProductOtherInfo>
+            {
+                new ProductOtherInfo {
+                    ProductId = 1,
+                    TransportTemperature = "低于-18℃",
+                    StorageTemperature = "低于-20℃",
+                    ExpiryTime = "240天",
+                    AfterDefrosting = "请于24小时内食用，不可复冻",
+                    ThawingMethod = "常温"
+                    },
+                new ProductOtherInfo {
+                    ProductId = 2,
+                    TransportTemperature = "低于-18℃",
+                    StorageTemperature = "低于-20℃",
+                    ExpiryTime = "240天",
+                    AfterDefrosting = "请于24小时内食用，不可复冻",
+                    ThawingMethod = "常温"
+                    }
+            };
+            productotherinfoes.ForEach(a => context.ProductOtherInfoes.Add(a));
+            #endregion
+
+            #region ProductSize
+            var productsizes = new List<ProductSize>
+            {
+                new ProductSize{
+                    ProductId = 1,
+                    Size = "16/20",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 111.00M
+                    },
+                new ProductSize{
+                    ProductId = 1,
+                    Size = "04/08",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 111.00M
+                    },
+                new ProductSize{
+                    ProductId = 1,
+                    Size = "08/12",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    },
+                new ProductSize{
+                    ProductId = 1,
+                    Size = "12/16",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    },
+                new ProductSize{
+                    ProductId = 2,
+                    Size = "08/12",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    },
+                    new ProductSize{
+                    ProductId = 2,
+                    Size = "12/16",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    },
+                    new ProductSize{
+                    ProductId = 2,
+                    Size = "16/20",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    },
+                    new ProductSize{
+                    ProductId = 2,
+                    Size = "20/24",
+                    NetWeightPerSingle = "最小133克，最大200克",
+                    NetWeightPerBox = 700,
+                    PricePerBox = 330.00M
+                    }
+            };
+            productsizes.ForEach(a => context.ProductSizes.Add(a));
+            #endregion
+
+            #region ProductToService
+            var producttoservices = new List<ProductToService>
+            {
+                new ProductToService{
+                    ProductId = 1,
+                    ServiceId = 1
+                },
+                new ProductToService{
+                    ProductId = 1,
+                    ServiceId = 2
+                },
+                new ProductToService{
+                    ProductId = 1,
+                    ServiceId = 3
+                },
+                new ProductToService{
+                    ProductId = 2,
+                    ServiceId = 1
+                },
+                new ProductToService{
+                    ProductId = 2,
+                    ServiceId = 2
+                },
+                new ProductToService{
+                    ProductId = 2,
+                    ServiceId = 3
+                }
+            };
+            producttoservices.ForEach(a => context.ProductToServices.Add(a));
+            #endregion
+
+            #region ProductValue
+            var productvalue = new List<ProductValue>
+            {
+                new ProductValue {
+                    ProductId = 1,
+                    EnergeticValue = 11,
+                    Proteins = 22,
+                    Fat = 33,
+                    Carbohydrate = 44,
+                    DietaryFibre = 55,
+                    Cholesterol = 66
+                },
+                new ProductValue {
+                    ProductId = 2,
+                    EnergeticValue = 11,
+                    Proteins = 22,
+                    Fat = 33,
+                    Carbohydrate = 44,
+                    DietaryFibre = 55,
+                    Cholesterol = 66
+                }
+            };
+            productvalue.ForEach(a => context.ProductValues.Add(a));
+            #endregion
+
+
 
             new List<Product>
             {
-                new Product { Title = "挪威深海帝王蟹", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg", IsHot = 1 },
-                new Product { Title = "Worlds", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Aaron Goldberg"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "For Those About To Rock We Salute You", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "北极贝", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "AC/DC"), ProductImageUrl = "/Content/Images/ProductImages/Daizi_1.jpg", IsHot = 1 },
-                new Product { Title = "三文鱼", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Accept"), ProductImageUrl = "/Content/Images/ProductImages/Salmon_1.jpg", IsHot = 1 },
-                new Product { Title = "Restless and Wild", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Accept"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Górecki: Symphony No. 3", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Big Ones", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Aerosmith"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Quiet Songs", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Aisha Duo"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Jagged Little Pill", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Alanis Morissette"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Facelift", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Alice In Chains"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Frank", Genre = genres.Single(g => g.Name == "Pop"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Amy Winehouse"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ring My Bell", Genre = genres.Single(g => g.Name == "Disco"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Anita Ward"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Chill: Brazil (Disc 2)", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Antônio Carlos Jobim"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Warner 25 Anos", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Antônio Carlos Jobim"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Plays Metallica By Four Cellos", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Apocalyptica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Revelations", Genre = genres.Single(g => g.Name == "Alternative"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Audioslave"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Audioslave", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Audioslave"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Last Night of the Proms", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Barry Wordsworth & BBC Concert Orchestra"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Sibelius: Finlandia", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Berliner Philharmoniker & Hans Rosbaud"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Mozart: Symphonies Nos. 40 & 41", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Berliner Philharmoniker & Herbert Von Karajan"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best Of Billy Cobham", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Billy Cobham"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Alcohol Fueled Brewtality Live! [Disc 1]", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Black Label Society"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Alcohol Fueled Brewtality Live! [Disc 2]", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Black Label Society"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Black Sabbath Vol. 4 (Remaster)", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Black Sabbath"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Black Sabbath", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Black Sabbath"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Carmina Burana", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Boston Symphony Orchestra & Seiji Ozawa"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "A Soprano Inspired", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Britten Sinfonia, Ivor Bolton & Lesley Garrett"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Chemical Wedding", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Bruce Dickinson"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Prenda Minha", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Caetano Veloso"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Sozinho Remix Ao Vivo", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Caetano Veloso"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Cake: B-Sides and Rarities", Genre = genres.Single(g => g.Name == "Alternative"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Cake"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Carried to Dust (Bonus Track Version)", Genre = genres.Single(g => g.Name == "Alternative"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Calexico"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Cássia Eller - Sem Limite [Disc 1]", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Cássia Eller"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Le Freak", Genre = genres.Single(g => g.Name == "Disco"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chic"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Scheherazade", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chicago Symphony Orchestra & Fritz Reiner"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Minha Historia", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chico Buarque"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Afrociberdelia", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chico Science & Nação Zumbi"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Da Lama Ao Caos", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chico Science & Nação Zumbi"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Carry On", Genre = genres.Single(g => g.Name == "Alternative"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Chris Cornell"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "SCRIABIN: Vers la flamme", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Christopher O'Riley"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Acústico MTV [Live]", Genre = genres.Single(g => g.Name == "Reggae"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Cidade Negra"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Cidade Negra - Hits", Genre = genres.Single(g => g.Name == "Reggae"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Cidade Negra"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Na Pista", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Cláudio Zoli"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Chronicle, Vol. 1", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Creedence Clearwater Revival"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Chronicle, Vol. 2", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Creedence Clearwater Revival"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Into The Light", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "David Coverdale"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Come Taste The Band", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Deep Purple In Rock", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Fireball", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Machine Head", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "MK III The Final Concerts [Disc 1]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Purpendicular", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Slaves And Masters", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Stormbringer", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Battle Rages On", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Final Concerts (Disc 2)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Deep Purple"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Outbreak", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Dennis Chambers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Djavan Ao Vivo - Vol. 02", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Djavan"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Djavan Ao Vivo - Vol. 1", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Djavan"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "MacArthur Park Suite", Genre = genres.Single(g => g.Name == "Disco"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Donna Summer"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Un-Led-Ed", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Dread Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best of Ed Motta", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ed Motta"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Adams, John: The Chairman Dances", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Edo de Waart & San Francisco Symphony"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Elis Regina-Minha História", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Elis Regina"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Pachelbel: Canon & Gigue", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "English Concert & Trevor Pinnock"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Unplugged", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Eric Clapton"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Cream Of Clapton", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Eric Clapton"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Unplugged", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Eric Clapton"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Respighi:Pines of Rome", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Eugene Ormandy"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Strauss: Waltzes", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Eugene Ormandy"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "King For A Day Fool For A Lifetime", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Faith No More"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Deixa Entrar", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Falamansa"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "In Your Honor [Disc 1]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Foo Fighters"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "In Your Honor [Disc 2]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Foo Fighters"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Colour And The Shape", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Foo Fighters"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bongo Fury", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Frank Zappa & Captain Beefheart"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Roda De Funk", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Funk Como Le Gusta"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Quanta Gente Veio Ver (Live)", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Gilberto Gil"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Quanta Gente Veio ver--Bônus De Carnaval", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Gilberto Gil"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Faceless", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Godsmack"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Meus Momentos", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Gonzaguinha"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Nielsen: The Six Symphonies", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Göteborgs Symfoniker & Neeme Järvi"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Appetite for Destruction", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Guns N' Roses"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Use Your Illusion I", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Guns N' Roses"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Use Your Illusion II", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Guns N' Roses"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Blue Moods", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Incognito"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "A Matter of Life and Death", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Brave New World", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Fear Of The Dark", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live At Donington 1992 (Disc 1)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live At Donington 1992 (Disc 2)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Rock In Rio [CD2]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Number of The Beast", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The X Factor", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Virtual XI", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "A Real Dead One", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "A Real Live One", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live After Death", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "No Prayer For The Dying", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Piece Of Mind", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Powerslave", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Rock In Rio [CD1]", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Rock In Rio [CD2]", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Seventh Son of a Seventh Son", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Somewhere in Time", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Number of The Beast", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Iron Maiden", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Iron Maiden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Mascagni: Cavalleria Rusticana", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "James Levine"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Emergency On Planet Earth", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Jamiroquai"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Are You Experienced?", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Jimi Hendrix"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Surfing with the Alien (Remastered)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Joe Satriani"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Jorge Ben Jor 25 Anos", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Jorge Ben"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Jota Quest-1995", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Jota Quest"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Living After Midnight", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Judas Priest"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Weill: The Seven Deadly Sins", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Kent Nagano and Orchestre de l'Opéra de Lyon"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Kiss", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Kiss"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Unplugged [Live]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Kiss"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "BBC Sessions [Disc 1] [Live]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "BBC Sessions [Disc 2] [Live]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Coda", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Houses Of The Holy", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "In Through The Out Door", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "IV", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Led Zeppelin I", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Led Zeppelin II", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Led Zeppelin III", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Physical Graffiti [Disc 1]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Physical Graffiti [Disc 2]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Presence", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Song Remains The Same (Disc 1)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Song Remains The Same (Disc 2)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Led Zeppelin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Mais Do Mesmo", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Legião Urbana"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Hits", Genre = genres.Single(g => g.Name == "Reggae"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Lenny Kravitz"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Hits", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Lenny Kravitz"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Hits", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Lenny Kravitz"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Tchaikovsky: The Nutcracker", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "London Symphony Orchestra & Sir Charles Mackerras"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Duos II", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Luciana Souza/Romero Lubambo"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Chill: Brazil (Disc 1)", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Marcos Valle"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Misplaced Childhood", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Marillion"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Barulhinho Bom", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Marisa Monte"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Szymanowski: Piano Works, Vol. 1", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Martin Roscoe"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best Of Men At Work", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Men At Work"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "...And Justice For All", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Black Product", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Garage Inc. (Disc 1)", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Garage Inc. (Disc 2)", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Load", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Master Of Puppets", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "ReLoad", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ride The Lightning", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "St. Anger", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Metallica"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Berlioz: Symphonie Fantastique", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Prokofiev: Romeo & Juliet", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Miles Ahead", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Miles Davis"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Essential Miles Davis [Disc 1]", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Miles Davis"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Essential Miles Davis [Disc 2]", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Miles Davis"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Milton Nascimento Ao Vivo", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Milton Nascimento"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Minas", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Milton Nascimento"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Motley Crue Greatest Hits", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Mötley Crüe"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ace Of Spades", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Motörhead"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Mozart: Chamber Music", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Nash Ensemble"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best of Beethoven", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Nicolaus Esterhazy Sinfonia"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Nevermind", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Nirvana"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Compositores", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "O Terço"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Olodum", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Olodum"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bach: The Brandenburg Concertos", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Orchestra of The Age of Enlightenment"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Acústico MTV", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Os Paralamas Do Sucesso"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Arquivo II", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Os Paralamas Do Sucesso"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Arquivo Os Paralamas Do Sucesso", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Os Paralamas Do Sucesso"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Tribute", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bark at the Moon (Remastered)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Blizzard of Ozz", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Diary of a Madman (Remastered)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "No More Tears (Remastered)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Speak of the Devil", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ozzy Osbourne"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Walking Into Clarksdale", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Page & Plant"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Beast Live", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Paul D'Ianno"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live On Two Legs [Live]", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Pearl Jam"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Riot Act", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Pearl Jam"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ten", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Pearl Jam"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Vs.", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Pearl Jam"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Dark Side Of The Moon", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Pink Floyd"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Hits I", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Queen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Greatest Hits II", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Queen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "News Of The World", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Queen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "New Adventures In Hi-Fi", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "R.E.M."), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Raul Seixas", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Raul Seixas"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "By The Way", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Red Hot Chili Peppers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Californication", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Red Hot Chili Peppers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Purcell: The Fairy Queen", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Roger Norrington, London Classical Players"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Haydn: Symphonies 99 - 104", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Royal Philharmonic Orchestra & Sir Thomas Beecham"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Retrospective I (1974-1980)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Rush"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Santana - As Years Go By", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Santana"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Santana Live", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Santana"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Supernatural", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Santana"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Handel: The Messiah (Highlights)", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Scholars Baroque Ensemble"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Prokofiev: Symphony No.1", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Sergei Prokofiev & Yuri Temirkanov"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Wagner: Favourite Overtures", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Sir Georg Solti & Wiener Philharmoniker"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Maquinarama", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Skank"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "O Samba Poconé", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Skank"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "A-Sides", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Soundgarden"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Heart of the Night", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Spyro Gyra"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Morning Dance", Genre = genres.Single(g => g.Name == "Jazz"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Spyro Gyra"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "In Step", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Stevie Ray Vaughan & Double Trouble"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Core", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Stone Temple Pilots"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Mezmerize", Genre = genres.Single(g => g.Name == "Metal"), Price = 8.99M, Producer = producers.Single(a => a.Name == "System Of A Down"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Temple of the Dog", Genre = genres.Single(g => g.Name == "Alternative"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Temple of the Dog"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "[1997] Black Light Syndrome", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Terry Bozzio, Tony Levin & Steve Stevens"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "South American Getaway", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The 12 Cellists of The Berlin Philharmonic"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live [Disc 1]", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Black Crowes"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Live [Disc 2]", Genre = genres.Single(g => g.Name == "Blues"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Black Crowes"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Beyond Good And Evil", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Cult"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Doors", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Doors"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "English Renaissance", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The King's Singers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Police Greatest Hits", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Police"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Every Kind of Light", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Posies"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Hot Rocks, 1964-1971 (Disc 1)", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Rolling Stones"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "No Security", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Rolling Stones"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Voodoo Lounge", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Rolling Stones"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "My Generation - The Very Best Of The Who", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "The Who"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Serie Sem Limite (Disc 1)", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Tim Maia"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Serie Sem Limite (Disc 2)", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Tim Maia"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bach: Toccata & Fugue in D Minor", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Ton Koopman"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Achtung Baby", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "B-Sides 1980-1990", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "How To Dismantle An Atomic Bomb", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Pop", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Rattle And Hum", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best Of 1980-1990", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "War", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Zooropa", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "U2"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "UB40 The Best Of - Volume Two [UK]", Genre = genres.Single(g => g.Name == "Reggae"), Price = 8.99M, Producer = producers.Single(a => a.Name == "UB40"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Diver Down", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Van Halen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "The Best Of Van Halen, Vol. I", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Van Halen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Van Halen III", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Van Halen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Van Halen", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Van Halen"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Axé Bahia 2001", Genre = genres.Single(g => g.Name == "Pop"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Various Producers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Sambas De Enredo 2001", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Various Producers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Vozes do MPB", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Various Producers"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Contraband", Genre = genres.Single(g => g.Name == "Rock"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Velvet Revolver"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Vinicius De Moraes", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Vinícius De Moraes"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bach: Goldberg Variations", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Wilhelm Kempff"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bartok: Violin & Viola Concertos", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Yehudi Menuhin"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Bach: The Cello Suites", Genre = genres.Single(g => g.Name == "Classical"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Yo-Yo Ma"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" },
-                new Product { Title = "Ao Vivo [IMPORT]", Genre = genres.Single(g => g.Name == "Latin"), Price = 8.99M, Producer = producers.Single(a => a.Name == "Zeca Pagodinho"), ProductImageUrl = "/Content/Images/ProductImages/Crab_1.jpg" }
+                new Product { 
+                    Title = "挪威深海帝王蟹 - 蟹腿",
+                    TitleEn = "Norway KingCrab - Legs",
+                    Genre = genres.Single(g => g.Name == "蟹"), 
+                    Area = areas.Single(a => a.Name == "挪威"),
+                    Producer = producers.Single(a => a.Name == "景悦锦辰"),
+                    Description = "帝王蟹又名皇帝蟹、石蟹或岩蟹，即石蟹科的甲壳类，它们主要分布在寒冷的海域。因其体型巨大而得名，素有“蟹中之王”的美誉。由于它们的体型巨大及肉质美味，很多物种都被广泛捕捉来作为食物，当中最为普遍的是堪察加拟石蟹。",
+                    SizeDescription = "每个马斯科箱的容量",
+                    ProductValue = productvalue.Single(v => v.ProductId == 1),
+                    ProductImages = productimages.FindAll(i => i.ProductId == 1),
+                    Dishes = dishes.FindAll( d => d.ProductId == 1),
+                    ProductOtherInfo = productotherinfoes.Single(o => o.ProductId ==1 ),
+                    ProductSizes = productsizes.FindAll(s => s.ProductId == 1),
+                    MainImageUrl = "Crab_1.jpg",
+                    IsHot = 1 
+                },
+                new Product { 
+                    Title = "黑虎虾 - 整虾",
+                    TitleEn = "Black Tiger Shrimp - HOSO",
+                    Genre = genres.Single(g => g.Name == "虾"), 
+                    Area = areas.Single(a => a.Name == "越南"),
+                    Producer = producers.Single(a => a.Name == "景悦锦辰"),
+                    Description = "黑虎虾原产于东南亚、越南、泰国和缅甸，其中以越南南部出产的黑虎虾最为鲜美甘甜，肉质饱满弹性十足。 湄公河与南中国海咸淡交界处，矿物质含量丰富，所以这里产的虾营养丰富，肥美无比。 黑虎大虾越大越珍贵，特别是2头以上的，野生的黑虎大虾产量更是稀缺。",
+                    SizeDescription = "每个马斯科箱的容量",
+                    ProductValue = productvalue.Single(v => v.ProductId == 2),
+                    ProductImages = productimages.FindAll(i => i.ProductId == 2),
+                    Dishes = dishes.FindAll( d => d.ProductId == 2),
+                    ProductOtherInfo = productotherinfoes.Single(o => o.ProductId == 2 ),
+                    ProductSizes = productsizes.FindAll(s => s.ProductId == 2),
+                    MainImageUrl = "BlackTigerSHrimp_1.jpg",
+                    IsHot = 1 
+                }
             }.ForEach(a => context.Products.Add(a));
 
             new List<Service>
             {
-                new Service {Title = "馈赠礼盒",KeyDescription = "馈赠礼盒业务主要描述馈赠礼盒业务主要描述馈赠礼盒业务主要描述",PlusDescription = "馈赠礼盒业务辅助描述馈赠礼盒业务辅助描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
-                new Service {Title = "企业礼券",KeyDescription = "企业礼券业务主要描述企业礼券业务主要描述",PlusDescription = "企业礼券业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
-                new Service {Title = "餐厅配送",KeyDescription = "餐厅配送业务主要描述餐厅配送业务主要描述",PlusDescription = "餐厅配送业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"},
-                new Service {Title = "家庭配送",KeyDescription = "家庭配送业务主要描述",PlusDescription = "家庭配送业务次要描述",ServiceImageUrl = "Content/Images/ServiceImages/Lihe_1.png"}
+                new Service {Title = "礼盒礼券",KeyDescription = "以“礼”服人，选择景悦锦辰",PlusDescription = "景悦锦辰为您提供多样化的礼盒服务，您可以从以下搭配礼盒中任选，亦可以个性化选择产品组合进行定制。",ServiceImageUrl = "Giftbox.png"},
+                new Service {Title = "餐厅配送",KeyDescription = "餐厅配送业务主要描述餐厅配送业务主要描述",PlusDescription = "餐厅配送业务次要描述",ServiceImageUrl = "Canting.png"},
+                new Service {Title = "家庭配送",KeyDescription = "家庭配送业务主要描述",PlusDescription = "家庭配送业务次要描述",ServiceImageUrl = "Jiating.png"}
             }.ForEach(a => context.Services.Add(a));
         }
     }

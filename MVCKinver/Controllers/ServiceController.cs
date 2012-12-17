@@ -22,8 +22,15 @@ namespace MVCKinver.Controllers
         // GET:/Service/Detail
         public ActionResult Details(int id)
         {
-            var serviceModel = storeDB.Services.Find(id);
-            return View(serviceModel);
+            if (storeDB.Services.Find(id) != null){
+                    var serviceModel = storeDB.Services.Find(id);
+                    this.ViewBag.menuSelected = "service" + id.ToString();
+                    return View(serviceModel);
+                }
+            else
+            {
+                return RedirectToAction("NotFound","Error");
+            }
         }
     }
 }

@@ -1,10 +1,19 @@
 ﻿@model MVCKinver.Models.Genre
 
 @{
-    ViewBag.Title = "浏览产品";
+    ViewBag.Title = Model.Name + " - 产品列表 | 景悦锦辰";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        var genreSelected = $("#genreSelected").val();
+        $("#" + genreSelected).addClass("active");
+        $("#" + genreSelected).children("i").addClass("icon-white");
+        $("#" + genreSelected).children("i").removeClass("opacity-point-twentyfive");
+    });
+</script>
 
 <div class="container container-margin-top">
+    <input id="genreSelected" type="hidden" value="@ViewBag.genreSelected"/>
     <div class="row">
         <div class="span2">
             @{Html.RenderAction("GenreMenu","Store");}
@@ -19,9 +28,12 @@
                     { 
                         <li>
                             <a href="@Url.Action("Details", new { id = product.ProductId})">
-                                <img class="img-polaroid" alt="@product.Title" src="@product.ProductImageUrl" />
+                                <img class="img-polaroid" alt="@product.Title" src="@Url.Content("~/Content/Images/ProductImages/List/"+@product.MainImageUrl)" />
+                            </a>
+                            <a href="@Url.Action("Details", new { id = product.ProductId})">
                                 <span>@product.Title</span>
                             </a>
+                            <span>@product.ProductSizes.FirstOrDefault().PricePerBox</span>
                         </li>
                     }
                 </ul>

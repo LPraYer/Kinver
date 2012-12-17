@@ -1,0 +1,26 @@
+﻿@model List<MVCKinver.Models.Genre>
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="stores">
+@{
+    var roots = Model.Where(g => g.FatherGenreId == 0).ToList();
+    var i = 0;
+    foreach (var rootgenre in roots)
+    {
+        i += 1;
+        <li class="nav-header">
+            @rootgenre.Name
+        </li>
+        var levelones = Model.Where(g => g.FatherGenreId == rootgenre.GenreId).ToList();
+        foreach (var levelonegenre in levelones)
+        {
+            <li>
+                @Html.ActionLink(levelonegenre.Name, "Browse", "Store", new { Genre = levelonegenre.GenreUrl }, null)
+            </li>
+        }
+        if (i != roots.Count())
+        {
+            <li class="divider"></li>
+        }
+    }
+}
+</ul>

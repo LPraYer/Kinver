@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -107,13 +108,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ContactInfo.cs" />
+    <Compile Include="Models\Dish.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\KinverEntities.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Producer.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
+    <Compile Include="Models\ProductOtherInfo.cs" />
+    <Compile Include="Models\ProductSize.cs" />
+    <Compile Include="Models\ProductToService.cs" />
+    <Compile Include="Models\ProductValue.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
@@ -122,19 +131,45 @@
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\GuestsImages\GunghoPizza_Jade.jpg" />
+    <Content Include="Content\Images\GuestsImages\GunghoPizza_John.jpg" />
+    <Content Include="Content\Images\hero-page-one.jpg" />
+    <Content Include="Content\Images\hero-page-two-text.png" />
+    <Content Include="Content\Images\hero-page-two.jpg" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\logo-w240.png" />
+    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\Crab_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\Crab_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\Crab_4.jpg" />
+    <Content Include="Content\Images\QuoteEnd.png" />
+    <Content Include="Content\Images\QuoteStart.png" />
+    <Content Include="Content\Images\ServiceImages\Normal\Canting.png" />
+    <Content Include="Content\Images\ServiceImages\Normal\Giftbox.png" />
+    <Content Include="Content\Images\ServiceImages\Normal\Giftcard.png" />
+    <Content Include="Content\Images\ServiceImages\Normal\Jiating.png" />
+    <Content Include="Content\Images\ServiceImages\Small\Canting.png" />
+    <Content Include="Content\Images\ServiceImages\Small\giftbox.png" />
+    <Content Include="Content\Images\ServiceImages\Small\giftcard.png" />
+    <Content Include="Content\Images\ServiceImages\Small\jiating.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Black.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Blue.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Gold.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Green.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Purple.png" />
+    <Content Include="Content\Images\WaterColorImages\WaterColor_Red.png" />
     <Content Include="Content\themes\bootstrap\bootstrap-responsive.css" />
     <Content Include="Content\themes\bootstrap\bootstrap.css" />
     <Content Include="Content\themes\fancybox\fancybox.css" />
-    <Content Include="Content\Images\giftbox.png" />
     <Content Include="Content\Images\home-showcase.png" />
-    <Content Include="Content\Images\house.png" />
-    <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\placeholder.gif" />
     <Content Include="Content\Images\hero-page.jpg" />
-    <Content Include="Content\Images\ProductImages\Crab_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Daizi_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Salmon_1.jpg" />
-    <Content Include="Content\Images\ServiceImages\Lihe_1.png" />
+    <Content Include="Content\Images\ProductImages\Original\Crab_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\Daizi_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\Salmon_1.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -266,9 +301,15 @@
     <Content Include="Views\Service\Details.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\HttpError.cshtml" />
+    <Content Include="Views\Home\GenreMenuForNav.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\ProductImages\List\" />
+    <Folder Include="Content\Images\ProductImages\Thumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

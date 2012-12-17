@@ -1,0 +1,68 @@
+﻿@model MVCKinver.Models.ContactInfo
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <input id="SubmitMessage" value="@ViewBag.SubmitMessage" type="hidden" />
+    <fieldset style="border-bottom:1px dashed #ccc;padding-bottom:40px;">
+        <legend><span id="ServiceTitle"></span>业务详询</legend>
+        <p class="muted">您可以随时通过<a href="/Home/ContactUs" target="_blank">联系我们</a>页面中提供的方式与我们沟通，或者填写以下信息，我们会在24小时内尽快与您联系。</p>
+        <div style="display:table;">
+            <div style="float:left;margin-right:20px;">
+                <div>
+                    @Html.LabelFor(model => model.Name)
+
+                    @Html.TextBoxFor(model => model.Name, new { maxlength = "20",placeholder = "选填"})
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div style="float:left;margin-right:20px;">
+                <div>
+                    @Html.LabelFor(model => model.MailAddress)
+                
+                    @Html.TextBoxFor(model => model.MailAddress, new { maxlength = "20",placeholder = "选填"})
+                    @Html.ValidationMessageFor(model => model.MailAddress)
+                </div>
+            </div>
+            <div style="float:left;margin-right:20px;">
+                <div>
+                    @Html.LabelFor(model => model.PhoneNumber)
+                
+                    @Html.TextBoxFor(model => model.PhoneNumber, new { maxlength = "20",placeholder = "选填"})
+                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message, new { style = "width:686px;height:100px;",maxlength = "500",placeholder = "选填"})
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+        @{//相关的服务，即来自哪个服务页面
+          }
+        <input type="hidden" id="Service" name="Service"/>
+        <div>
+            <input id="Finish" type="submit" value="完成" class="btn btn-primary"/>
+            <input id="SlideUpForm" type="button" value="取消" class="btn" style="margin-left:20px;" />
+            <span id="Warning" style="margin-left:40px;color:#d72c2c;"></span>
+        </div>
+    </fieldset>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Finish").click(function () {
+                if ($('#MailAddress').val() == '' && $('#PhoneNumber').val() == '') {
+                    $('#Warning').html("*请至少提供邮箱或电话作为联系方式");
+                    $('#MailAddress').focus();
+                    return false;
+                }
+                if($('#MailAddress').val() != '' && !$("#MailAddress").val().match(/^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){ 
+                    $("#Warning").html("*邮箱地址格式有误"); 
+                    $("#MailAddress").focus(); 
+                    return false; 
+                }
+            });
+        });
+    </script>
+}

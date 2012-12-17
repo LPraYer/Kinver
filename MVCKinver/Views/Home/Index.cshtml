@@ -5,13 +5,37 @@
 <div id="promotion">
     <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
-            <div id="promotion1" class="active item">111</div>
-            <div id="promotion2" class="item">222</div>
-            <div id="promotion3" class="item">333</div>
+            <div id="promotion1" class="active item">
+                <div class="container">
+                    <a href="@Url.Content("~/Service/Details/4")" class="btn btn-large">查看景悦家庭配送服务 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a>
+                </div>
+            </div>
+            <div id="promotion2" class="item">
+                <div class="container">
+                    <div class="contents">
+                        <img src="@Url.Content("~/Content/Images/hero-page-two-text.png")" alt="产品来自世界各地" />
+                        
+                        <p><a href="@Url.Content("~/Store/Browse?Genre=Beaf")" class="btn btn-large">查看我们提供的商品 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="promotion3" class="item">
+                <div class="container">
+                    <a href="@Url.Content("~/Service/Details/4")" class="btn btn-large">查看景悦家庭配送服务 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a>
+                </div>
+            </div>
         </div>
+        <script>
+            !function ($) {
+                $(function () {
+                    $('#myCarousel').carousel()
+                })
+            }(window.jQuery)
+        </script>
     </div>
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    <a style="color:gray;" class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a style="color:gray;" class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
 <div id="services">
     <div class="container">
@@ -19,16 +43,17 @@
             我们提供以下服务
         </h3>
         <div class="row">
-            <div class="span3">
-                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+            <div class="span4" style="text-align:center;">
+                <img alt="" src="@Url.Content("~/Content/Images/ServiceImages/Normal/Giftbox.png")"/>
                 <h4>
-                    馈赠礼盒
+                    礼盒礼券
                 </h4>
-                <p>
-                    景悦豪礼，景悦锦盒，景悦佳品
-                </p>
+                
                 <p>
                     不同礼盒，同样品质，适应各种需求
+                </p>
+                <p>
+                    分发礼券，配送上门，方便不失尊贵
                 </p>
                 <p>
                     以“礼”服人，选择景悦锦辰
@@ -39,28 +64,9 @@
                     </a>
                 </p>
             </div>
-            <div class="span3">
-                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
-                <h4>
-                    企业礼券
-                </h4>
-                <p>
-                    产品丰富，组合更多样
-                </p>
-                <p>
-                    分发快捷，提取更简单
-                </p>
-                <p>
-                    激励员工，用品质证明
-                </p>
-                <p>
-                    <a class="btn">
-                        选择礼券 >>
-                    </a>
-                </p>
-            </div>
-            <div class="span3">
-                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+            
+            <div class="span4" style="text-align:center;">
+                <img alt="" src="@Url.Content("~/Content/Images/ServiceImages/Normal/Canting.png")" />
                 <h4>
                     餐厅配送
                 </h4>
@@ -82,8 +88,8 @@
                     * 仅限北京地区
                 </p>
             </div>
-            <div class="span3">
-                <img alt="" src="@Url.Content("~/Content/Images/giftbox.png")" />
+            <div class="span4" style="text-align:center;">
+                <img alt="" src="@Url.Content("~/Content/Images/ServiceImages/Normal/Jiating.png")" />
                 <h4>
                     家庭配送
                 </h4>
@@ -118,13 +124,15 @@
             { 
                 <div class="span4">
                     <a href="@Url.Action("Details", "Store", new { id = product.ProductId})">
-                        <img class="img-polaroid" alt="@product.Title" src="@product.ProductImageUrl" />
+                        <img @*class="img-polaroid"*@
+                             title="@product.Title"
+                             src="../Content/Images/ProductImages/List/@product.MainImageUrl" />
                     </a>
                     <p class="title">
                         <a href="@Url.Action("Details", "Store", new { id = product.ProductId})" title="@product.Title" target="_blank">
                             @product.Title
                         </a>
-                        <span class="price">￥@product.Price<span class="kg">&nbsp;/&nbsp;kg</span></span>
+                        <span class="price">￥@product.ProductSizes.First().PricePerBox<span class="kg">&nbsp;/&nbsp;kg</span></span>
                     </p>
                 </div>
             }

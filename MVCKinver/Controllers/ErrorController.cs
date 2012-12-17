@@ -19,6 +19,7 @@ namespace MVCKinver.Controllers
         // GET: /Error/NotFound
         public ActionResult NotFound()
         {
+            Response.Status = "404 Not Found";
             return View();
         }
 
