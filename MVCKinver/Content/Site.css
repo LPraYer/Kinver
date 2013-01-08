@@ -12,16 +12,14 @@ ul#product-list
 
 ul#product-list li
 {
-	width: 300px;
 	float: left;
-	margin: 10px;
-	text-align: center;
+	margin: 20px 10px 20px 10px;
+	text-align: left;
 }
 
 ul#product-list li a, ul#product-list li .button
 {
 	font-size: 13px;
-	float: left;
 }
 
 ul#product-list li a span
@@ -29,6 +27,31 @@ ul#product-list li a span
 	color: #9b9993;
 	text-decoration: underline;
 }
+    /*列表图片大小适应两种分辨率*/
+    ul#product-list img {
+        width:240px;
+    }
+
+    @media (min-width: 1200px) {
+        ul#product-list img {
+            width:300px;
+        }
+    }
+
+/*图片的鼠标悬浮过渡*/
+ul#product-list img, #hot-products img, #product-details-images img {
+    -webkit-transition: all .2s ease-in;
+}
+    
+    ul#product-list img:hover,#hot-products img:hover,#product-details-images img:hover {
+        /*透明度*/
+        opacity:0.6;
+        /*旋转*/
+        /*-webkit-transform:rotate(3deg);
+        -moz-transform:rotate(3deg);
+        -o-transform:rotate(3deg);
+        -ms-transform:rotate(3deg);*/
+    }
 
 #cart
 {
@@ -333,6 +356,10 @@ h4.product-details-label {
     margin-bottom:40px;
 }
 
+img.bigcursor {
+    cursor:url(/Content/Images/big.cur),auto!important;
+}
+
 .tooltip-icon {
     cursor:pointer;
 }
@@ -383,3 +410,10 @@ h4.product-details-label {
     margin:10px;
 }
 
+#NotFound {
+    background:url(/Content/Images/404.png) no-repeat;
+    width:450px;
+    height:320px;
+    float:left;
+
+}

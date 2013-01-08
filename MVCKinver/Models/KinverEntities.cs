@@ -28,6 +28,12 @@ namespace MVCKinver.Models
         //20121206
         public DbSet<ContactInfo> ContactInfoes { get; set; }
 
+        //20121218
+        public DbSet<Material> Materials { get; set; }
+        public DbSet<Step> Steps { get; set; }
+        public DbSet<DishGenre> DishGernes { get; set; }
+        public DbSet<DishToDishGenre> DishToDishGenres { get; set; }
+
 
         //建立外链关系
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -44,8 +50,14 @@ namespace MVCKinver.Models
 
             ///产品和菜式的1对多关系
             modelBuilder.Entity<Product>().HasMany(p => p.Dishes).WithRequired().HasForeignKey(d => d.ProductId);
-            ///
-            //modelBuilder.Entity<Product>().HasRequired(p => p.Genre).WithRequiredDependent();
+            
+            ///菜式和材料的1对多关系
+            ///modelBuilder.Entity<Dish>().HasMany(d => d.Materials).WithRequired().HasForeignKey(m => m.DishId);
+
+            ///菜式和步骤的1对多关系
+            ///modelBuilder.Entity<Dish>().HasMany(d => d.Steps).WithRequired().HasForeignKey(s =>s.DishId);
+
+            ///菜式分类的Model已经加上了，和菜式是多对多关系，需要时再加吧
 
 
             base.OnModelCreating(modelBuilder);

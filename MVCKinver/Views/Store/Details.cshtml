@@ -10,7 +10,7 @@
             <div class="nav-left" data-spy="affix" data-offset-top="0">
                 <ul@* id="categories"*@ class="nav nav-tabs nav-stacked">
                     <li>
-                    <span class="left-nav-header"><span class="muted">虾 - </span>同类产品</span>
+                    <span class="left-nav-header"><span class="muted">@Model.Genre.Name - </span>同类产品</span>
                     </li>
                     @{
                         //获得同类前十位产品
@@ -36,7 +36,8 @@
                         }
                         ///如果对应分类包含至少10个产品（因为控制器里使用的是Take(10)）
                         ///则显示查看更多链接，跳转到对应分类列表页面
-                        if (productList.Count == 10)
+                        ///if (productList.Count == 10)
+                        if (true)
                         { 
                             <li>
                                 <i class="icon-chevron-right opacity-point-twentyfive"></i>
@@ -76,17 +77,19 @@
                 @*主图*@
                 <div class="span2">
                     <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/"+@Model.MainImageUrl)" title="@Model.Title">
-                        <img alt="@Model.Title" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@Model.MainImageUrl)" />
+                        <img class="bigcursor" alt="@Model.Title" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@Model.MainImageUrl)" />
                     </a>
                 </div>
                 @*附图*@
-                @foreach( var image in @Model.ProductImages)
-                {
-                    <div class ="span2">
-                        <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/"+@image.ProductImageUrl)" title ="@image.ProductImageTitle">
-                            <img alt="@image.ProductImageTitle" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@image.ProductImageUrl)" />
-                        </a>
-                    </div>
+                @if(@Model.ProductImages != null){
+                    foreach( var image in @Model.ProductImages)
+                    {
+                        <div class ="span2">
+                            <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/"+@image.ProductImageUrl)" title ="@image.ProductImageTitle">
+                                <img class="bigcursor" alt="@image.ProductImageTitle" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@image.ProductImageUrl)" />
+                            </a>
+                        </div>
+                    }
                 }
                 
             </div>
@@ -101,147 +104,189 @@
                     </caption>
                     <thead>
                         <tr>
-                            <td>
+                            <td style="text-align:left;padding-left:20px;width:25%;">
                                 规格&nbsp;
                                 <i id="guigehelp" data-placement="right" data-original-title="@Model.SizeDescription" class="icon-question-sign tooltip-icon"></i>
                             <script type="text/javascript">
                                 $('#guigehelp').tooltip()
                             </script>
                             </td>
-                            <td>单体净重</td>
-                            <td>每份净重</td>
-                            <td>每份价格</td>
-                            <td>每500克价格</td>
+                            <td style="text-align:right;padding-right:20px;">包装方式及净重</td>
+                            <td style="text-align:right;padding-right:20px;">价格</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach(var s in Model.ProductSizes){
                         <tr>
-                            <td>
+                            <td style="text-align:left;padding-left:20px;width:25%;">
                                 @s.Size
                             </td>
-                            <td>
-                                @s.NetWeightPerSingle
+                            <td style="text-align:right;padding-right:20px;width:15%;">
+                                @s.NetWeightPerUnit 克 / @s.SaleUnit
                             </td>
-                            <td>
-                                @s.NetWeightPerBox 克
+                            <td style="text-align:right;padding-right:20px;width:30%;">
+                                ￥ @s.PricePerUnit 元
+                                
                             </td>
-                            <td>
-                                ￥ @s.PricePerBox
-                            </td>
-                            <td>
-                                ￥ @s.PricePerJin
+                            <td class="muted" style="text-align:left; padding-left:20px;width:30%;">
+                                ￥ @s.PricePerKG 元 / 千克
                             </td>
                         </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            <div id="product-details-cook">
-                <h4 class="product-details-label">
-                    烹饪方法
-                </h4>
-                <ul>
-                    @foreach (var p in @Model.Dishes)
-                    { 
-                        <li>
-                            @p.Content
-                        </li>
-                    }
-                </ul>
-            </div>
             <div class="row">
-                <div id="product-details-value" class="span5">
-                    <h4 class="product-details-label">
-                        营养价值
-                    </h4>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <td>营养元素</td>
-                                <td colspan="2">含量（每100克）</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>能量</td>
-                                <td>@Model.ProductValue.EnergeticValue</td>
-                                <td>千卡</td>
-                            </tr>
-                            <tr>
-                                <td>蛋白质</td>
-                                <td>@Model.ProductValue.Proteins</td>
-                                <td>克</td>
-                            </tr>
-                            <tr>
-                                <td>脂肪</td>
-                                <td>@Model.ProductValue.Fat</td>
-                                <td>克</td>
-                            </tr>
-                            <tr>
-                                <td>碳水化合物</td>
-                                <td>@Model.ProductValue.Carbohydrate</td>
-                                <td>毫克</td>
-                            </tr>
-                            <tr>
-                                <td>饮食纤维素</td>
-                                <td>@Model.ProductValue.DietaryFibre</td>
-                                <td>毫克</td>
-                            </tr>
-                            <tr>
-                                <td>胆固醇</td>
-                                <td>@Model.ProductValue.Cholesterol</td>
-                                <td>毫克</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="product-details-other" class="span5">
-                    <h4 class="product-details-label">
-                        其它说明
-                    </h4>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <td>说明项目</td>
-                                <td>值</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(@Model.ProductOtherInfo.TransportTemperature != null){
+                @if(@Model.ProductValue != null){
+                    <div id="product-details-value" class="span5">
+                        <h4 class="product-details-label">
+                            营养价值
+                        </h4>
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td>运输温度</td>
-                                    <td>@Model.ProductOtherInfo.TransportTemperature</td>
+                                    <td>营养元素</td>
+                                    <td colspan="2">含量（每100克）</td>
                                 </tr>
-                            }
-                            @if(@Model.ProductOtherInfo.StorageTemperature != null){
+                            </thead>
+                            <tbody>
                                 <tr>
-                                    <td>仓储温度</td>
-                                    <td>@Model.ProductOtherInfo.StorageTemperature</td>
+                                    <td>能量</td>
+                                    <td>@Model.ProductValue.EnergeticValue</td>
+                                    <td>千卡</td>
                                 </tr>
-                            }
-                            @if(@Model.ProductOtherInfo.ExpiryTime != null){
-                            <tr>
-                                <td>保质期</td>
-                                <td>@Model.ProductOtherInfo.ExpiryTime</td>
-                            </tr>
-                            }
-                            @if(@Model.ProductOtherInfo.AfterDefrosting != null){
-                            <tr>
-                                <td>解冻说明</td>
-                                <td>@Model.ProductOtherInfo.AfterDefrosting</td>
-                            </tr>
-                            }
-                            @if(@Model.ProductOtherInfo.ThawingMethod != null){
-                            <tr>
-                                <td>解冻方式</td>
-                                <td>@Model.ProductOtherInfo.ThawingMethod</td>
-                            </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                                <tr>
+                                    <td>蛋白质</td>
+                                    <td>@Model.ProductValue.Proteins</td>
+                                    <td>克</td>
+                                </tr>
+                                <tr>
+                                    <td>脂肪</td>
+                                    <td>@Model.ProductValue.Fat</td>
+                                    <td>克</td>
+                                </tr>
+                                <tr>
+                                    <td>碳水化合物</td>
+                                    <td>@Model.ProductValue.Carbohydrate</td>
+                                    <td>毫克</td>
+                                </tr>
+                                <tr>
+                                    <td>饮食纤维素</td>
+                                    <td>@Model.ProductValue.DietaryFibre</td>
+                                    <td>毫克</td>
+                                </tr>
+                                <tr>
+                                    <td>胆固醇</td>
+                                    <td>@Model.ProductValue.Cholesterol</td>
+                                    <td>毫克</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                @if(@Model.ProductOtherInfo != null){
+                    <div id="product-details-other" class="span5">
+                        <h4 class="product-details-label">
+                            其它说明
+                        </h4>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>说明项目</td>
+                                    <td>值</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(@Model.ProductOtherInfo.TransportTemperature != null){
+                                    <tr>
+                                        <td>运输温度</td>
+                                        <td>@Model.ProductOtherInfo.TransportTemperature</td>
+                                    </tr>
+                                }
+                                @if(@Model.ProductOtherInfo.StorageTemperature != null){
+                                    <tr>
+                                        <td>仓储温度</td>
+                                        <td>@Model.ProductOtherInfo.StorageTemperature</td>
+                                    </tr>
+                                }
+                                @if(@Model.ProductOtherInfo.ExpiryTime != null){
+                                <tr>
+                                    <td>保质期</td>
+                                    <td>@Model.ProductOtherInfo.ExpiryTime</td>
+                                </tr>
+                                }
+                                @if(@Model.ProductOtherInfo.AfterDefrosting != null){
+                                <tr>
+                                    <td>解冻说明</td>
+                                    <td>@Model.ProductOtherInfo.AfterDefrosting</td>
+                                </tr>
+                                }
+                                @if(@Model.ProductOtherInfo.ThawingMethod != null){
+                                <tr>
+                                    <td>解冻方式</td>
+                                    <td>@Model.ProductOtherInfo.ThawingMethod</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
             </div>
+            @if(@Model.Dishes != null){
+                <div id="product-details-cook">
+                    <h4 class="product-details-label">
+                        烹饪方法
+                    </h4>
+                    <ul>
+                        @foreach (var d in @Model.Dishes)
+                        { 
+                            <li>
+                                <div>
+                                    <h5>
+                                        @d.Title
+                                    </h5>
+                                </div>
+                                @if(d.Intro != ""){
+                                <p style="text-indent:2em;">
+                                    @d.Intro
+                                </p>
+                                }
+                                <div>
+                                    <p>食材：</p>
+                                    <p style="margin-left:20px;">
+                                        @foreach (var m in d.Materials)
+                                        { 
+                                            <span class="label label-info" style="margin-right:10px;">
+                                                @m.Name
+                                                @if(m.Weight != ""){
+                                                   <span class="muted">( @m.Weight )</span>
+                                                }
+                                            </span>
+                                        }
+                                    </p>
+                                </div>
+                                <div>步骤：</div>
+                                <div  style="margin-left:20px;">
+                                    <ol>
+                                        @foreach (var s in d.Steps)
+                                        { 
+                                            <li>
+                                                @s.Content
+                                            </li>
+                                        }
+                                    </ol>
+                                </div>
+                                @if(d.Remark != ""){
+                                    <p class="muted">
+                                        * @d.Remark
+                                    </p>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
             <div class="bshare-custom">
                 分享：
                 <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>

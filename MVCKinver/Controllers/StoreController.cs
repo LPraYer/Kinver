@@ -37,6 +37,7 @@ namespace MVCKinver.Controllers
                 foreach( var product in genreModel.Products)
                 {
                     product.ProductSizes = storeDB.ProductSizes.Where(s => s.ProductId == product.ProductId).ToList();
+                    product.Area = storeDB.Areas.Find(product.AreaId);
                 }
                 
                 return View(genreModel);
@@ -97,18 +98,20 @@ namespace MVCKinver.Controllers
                     productModel.ProductSizes = new List<ProductSize>();
                     foreach (var psize in psizes)
                     {
-                        psize.PricePerJin = Math.Round(psize.PricePerBox / psize.NetWeightPerBox * 500,2) ;
                         productModel.ProductSizes.Add(psize);
                     }
                 }
 
                 //添加菜式
                 var dishes = storeDB.Dishes.Where(d => d.ProductId == productModel.ProductId).ToList();
-                if (dishes != null)
+                
+                if (dishes.Count() != 0)
                 {
                     productModel.Dishes = new List<Dish>();
                     foreach (var dish in dishes)
                     {
+                        dish.Materials = storeDB.Materials.Where(m => m.DishId == dish.DishId).ToList();
+                        dish.Steps = storeDB.Steps.Where(s => s.DishId == dish.DishId).ToList();
                         productModel.Dishes.Add(dish);
                     }
                 }

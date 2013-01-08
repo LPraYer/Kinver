@@ -20,26 +20,40 @@
         </div>
         <div class="span10">
             <div class="genre">
-                <h3>
-                    <em>@Model.Name</em>
-                </h3>
+                <h2>
+                    @Model.Name
+                </h2>
+                <p>
+                    @Model.Description
+                </p>
                 <ul id="product-list">
                     @foreach (var product in Model.Products)
                     { 
                         <li>
-                            <a href="@Url.Action("Details", new { id = product.ProductId})">
-                                <img class="img-polaroid" alt="@product.Title" src="@Url.Content("~/Content/Images/ProductImages/List/"+@product.MainImageUrl)" />
-                            </a>
-                            <a href="@Url.Action("Details", new { id = product.ProductId})">
-                                <span>@product.Title</span>
-                            </a>
-                            <span>@product.ProductSizes.FirstOrDefault().PricePerBox</span>
+                            
+                            <div>
+                                <a href="@Url.Action("Details", new { id = product.ProductId})">
+                                    <img alt="@product.Title" src="@Url.Content("~/Content/Images/ProductImages/List/"+@product.MainImageUrl)" />
+                                </a>
+                            </div>
+                            <div>
+                                <a href="@Url.Action("Details", new { id = product.ProductId})">
+                                    @product.Title
+                                </a>
+                            </div>
+                            <div style="">
+                                <div style="float:left;">价格：￥@product.ProductSizes.FirstOrDefault().PricePerKG</div>
+                                <div style="float:right;">
+                                    来自
+                                    <span style="color:#3A87AD;">
+                                        @product.Area.Name
+                                    </span>
+                                </div>
+                                
+                            </div>
                         </li>
                     }
                 </ul>
-            </div>
-            <div id="test">
-                33333
             </div>
         </div>
     </div>

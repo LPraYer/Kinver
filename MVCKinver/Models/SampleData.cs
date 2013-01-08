@@ -10,6 +10,8 @@ namespace MVCKinver.Models
     {
         protected override void Seed(KinverEntities context)
         {
+
+            /*
             #region 分类genre
             var genres = new List<Genre>
             {
@@ -123,17 +125,97 @@ namespace MVCKinver.Models
                 new Area {Name = "挪威"},
                 new Area {Name = "越南"},
                 new Area {Name = "阿拉斯加"},
-                new Area {Name = "伊朗"}
+                new Area {Name = "伊朗"},
+                new Area {Name = "智利"}
             };
             areas.ForEach(a => context.Areas.Add(a));
+            #endregion
+
+            #region Materials 菜式材料
+            var materials = new List<Material>
+            {
+                new Material {Name="阿拉斯加帝王蟹腿",Weight="",DishId=1},
+                new Material {Name="青蒜",Weight="",DishId=1},
+                new Material {Name="姜末",Weight="",DishId=1},
+                new Material {Name="料酒",Weight="",DishId=1},
+                new Material {Name="盐",Weight="",DishId=1},
+                new Material {Name="白糖",Weight="",DishId=1},
+                new Material {Name="米醋",Weight="",DishId=1},
+                new Material {Name="胡椒粉",Weight="",DishId=1},
+                new Material {Name="水淀粉",Weight="",DishId=1},
+                new Material {Name="香油",Weight="",DishId=1},
+                new Material {Name="清水",Weight="",DishId=1},
+
+                new Material {Name="阿拉斯加帝王蟹腿",Weight="",DishId=2},
+                new Material {Name="独蒜头",Weight="",DishId=2},
+                new Material {Name="姜",Weight="",DishId=2},
+                new Material {Name="葱",Weight="",DishId=2},
+                new Material {Name="辣椒酱",Weight="",DishId=2},
+                new Material {Name="盐",Weight="",DishId=2},
+                new Material {Name="油",Weight="",DishId=2},
+
+            };
+            materials.ForEach(m => context.Materials.Add(m));
+            #endregion
+
+            #region Steps 菜式步骤
+            var steps = new List<Step> { 
+                new Step {Content="将阿拉斯加王蟹腿解冻后，切成适中的段，青蒜切段；",Order=1,DishId=1},
+                new Step {Content="锅里加热油，下入青蒜、姜末，煸出香味，即可下蟹腿，再加入白糖、盐和清水200ml；",Order=2,DishId=1},
+                new Step {Content="在旺火上烧开后，改用小火烧到汤汁转浓时，加入其他调料，再改用旺火，用水淀粉勾芡，颠翻几下，淋入香油即成。",Order=3,DishId=1},
+                new Step {Content="将阿拉斯加王蟹腿解冻后切成适当大小的块；",Order=1,DishId=2},
+                new Step {Content="蒜头去皮切片，姜切片，葱切成粗粒；",Order=2,DishId=2},
+                new Step {Content="加热油，加入蒜、姜、葱、辣椒酱爆香，再加入螃蟹5和适量的盐翻炒；",Order=3,DishId=2},
+                new Step {Content="加水适量，盖上盖子慢火焖10分钟，再用大火把多余的水蒸发掉即成。",Order=4,DishId=2},
+                new Step {Content="",Order=1,DishId=3},
+                new Step {Content="",Order=2,DishId=3},
+                new Step {Content="",Order=3,DishId=3},
+                new Step {Content="",Order=4,DishId=3},
+                new Step {Content="",Order=5,DishId=3},
+                new Step {Content="",Order=1,DishId=4},
+                new Step {Content="",Order=2,DishId=4},
+                new Step {Content="",Order=3,DishId=4},
+                new Step {Content="",Order=4,DishId=4},
+                new Step {Content="",Order=5,DishId=4},
+            };
+            steps.ForEach(s => context.Steps.Add(s));
             #endregion
 
             #region Dishes
             var dishes = new List<Dish> 
             { 
-                new Dish {Content = "香油帝王蟹",ProductId = 1},
-                new Dish {Content = "爆炒黑虎虾,做法配料什么的看需要设计字段",ProductId = 2},
-                new Dish {Content = "蒜香黑虎虾",ProductId = 2}
+                new Dish {
+                    DishId = 1,
+                    Title = "香油阿拉斯加帝王蟹",
+                    ProductId = 1,
+                    Intro = "素有“蟹中之王”之称的帝王蟹因其硕大肥美，生长于寒冷的深海水域绿色无污染而深受人们的喜爱和推崇。如果生食，您将亲眼看到帝王蟹那晶莹剔透、令人垂涎欲滴的蟹脂蟹膏；而炭火烤的，仅从香飘满屋、烟雾萦绕的蟹腿中便可嗅出帝王蟹那独有的甜美气息。",
+                    ImageUrl = "1",
+                    Remark = "菜式内容来源于LPraYer@下厨房"
+                },
+                new Dish {
+                    DishId = 2,
+                    Title = "蒜头阿拉斯加帝王蟹",
+                    ProductId = 1,
+                    Intro = "",
+                    ImageUrl = "2",
+                    Remark = ""
+                },
+                new Dish {
+                    DishId = 3,
+                    Title = "香油帝王蟹",
+                    ProductId = 2,
+                    Intro = "",
+                    ImageUrl = "",
+                    Remark = ""
+                },
+                new Dish {
+                    DishId = 4,
+                    Title = "香油帝王蟹",
+                    ProductId = 2,
+                    Intro = "",
+                    ImageUrl = "",
+                    Remark = ""
+                },
             };
             dishes.ForEach(a => context.Dishes.Add(a));
             #endregion
@@ -295,14 +377,14 @@ namespace MVCKinver.Models
             #endregion
 
 
-
+            #region Product
             new List<Product>
             {
                 new Product { 
-                    Title = "挪威深海帝王蟹 - 蟹腿",
-                    TitleEn = "Norway KingCrab - Legs",
+                    Title = "阿拉斯加深海帝王蟹",
+                    TitleEn = "Alaska KingCrab - Legs",
                     Genre = genres.Single(g => g.Name == "蟹"), 
-                    Area = areas.Single(a => a.Name == "挪威"),
+                    Area = areas.Single(a => a.Name == "阿拉斯加"),
                     Producer = producers.Single(a => a.Name == "景悦锦辰"),
                     Description = "帝王蟹又名皇帝蟹、石蟹或岩蟹，即石蟹科的甲壳类，它们主要分布在寒冷的海域。因其体型巨大而得名，素有“蟹中之王”的美誉。由于它们的体型巨大及肉质美味，很多物种都被广泛捕捉来作为食物，当中最为普遍的是堪察加拟石蟹。",
                     SizeDescription = "每个马斯科箱的容量",
@@ -331,13 +413,18 @@ namespace MVCKinver.Models
                     IsHot = 1 
                 }
             }.ForEach(a => context.Products.Add(a));
+            #endregion
 
+            #region service
             new List<Service>
             {
                 new Service {Title = "礼盒礼券",KeyDescription = "以“礼”服人，选择景悦锦辰",PlusDescription = "景悦锦辰为您提供多样化的礼盒服务，您可以从以下搭配礼盒中任选，亦可以个性化选择产品组合进行定制。",ServiceImageUrl = "Giftbox.png"},
                 new Service {Title = "餐厅配送",KeyDescription = "餐厅配送业务主要描述餐厅配送业务主要描述",PlusDescription = "餐厅配送业务次要描述",ServiceImageUrl = "Canting.png"},
                 new Service {Title = "家庭配送",KeyDescription = "家庭配送业务主要描述",PlusDescription = "家庭配送业务次要描述",ServiceImageUrl = "Jiating.png"}
             }.ForEach(a => context.Services.Add(a));
+            #endregion
+
+             */
         }
     }
 }

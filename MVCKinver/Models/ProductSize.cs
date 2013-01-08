@@ -16,12 +16,16 @@ namespace MVCKinver.Models
 
         public string Size { set; get; }
 
-        public string NetWeightPerSingle { set; get; }
+        public string SaleUnit { set; get; }
 
-        public int NetWeightPerBox { set; get; }
+        public int NetWeightPerUnit { set; get; }
 
-        public decimal PricePerBox { set; get; }
+        public decimal PricePerUnit { set; get; }
 
-        public decimal PricePerJin { set; get; }
+        public decimal CostPerUnit { set; get; }
+
+        public decimal PricePerKG { set; get; }
+
+        public decimal CostPerKG { set; get; }
     }
 }

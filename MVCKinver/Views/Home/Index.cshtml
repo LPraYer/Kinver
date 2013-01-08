@@ -124,7 +124,7 @@
             { 
                 <div class="span4">
                     <a href="@Url.Action("Details", "Store", new { id = product.ProductId})">
-                        <img @*class="img-polaroid"*@
+                        <img
                              title="@product.Title"
                              src="../Content/Images/ProductImages/List/@product.MainImageUrl" />
                     </a>
@@ -132,7 +132,7 @@
                         <a href="@Url.Action("Details", "Store", new { id = product.ProductId})" title="@product.Title" target="_blank">
                             @product.Title
                         </a>
-                        <span class="price">￥@product.ProductSizes.First().PricePerBox<span class="kg">&nbsp;/&nbsp;kg</span></span>
+                        <span class="price">￥@product.ProductSizes.First().PricePerKG<span class="kg">&nbsp;/&nbsp;kg</span></span>
                     </p>
                 </div>
             }

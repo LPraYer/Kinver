@@ -12,7 +12,17 @@ namespace MVCKinver.Models
     {
         public int DishId { set; get; }
 
-        public string Content { set; get; }
+        public string Title { set; get; }
+
+        public string Intro { set; get; }
+
+        public string ImageUrl { set; get; }
+
+        public string Remark { set; get; }
+
+        public List<Material> Materials { set; get; }
+
+        public List<Step> Steps { set; get; }
 
         public int ProductId { set; get; }
     }
