@@ -16,7 +16,7 @@
     <input id="genreSelected" type="hidden" value="@ViewBag.genreSelected"/>
     <div class="row">
         <div class="span2">
-            @{Html.RenderAction("GenreMenu","Store");}
+            @{Html.RenderAction("GenreMenu", "Store");}
         </div>
         <div class="span10">
             <div class="genre">
@@ -26,18 +26,26 @@
                 <p>
                     @Model.Description
                 </p>
-                <ul id="product-list">
+                @if (Model.Products.Count() == 0)
+                {
+                    <p>
+                        产品上线中……
+                    </p>
+                }
+                else
+                {
+                    <ul id="product-list">
                     @foreach (var product in Model.Products)
                     { 
                         <li>
                             
                             <div>
-                                <a href="@Url.Action("Details", new { id = product.ProductId})">
-                                    <img alt="@product.Title" src="@Url.Content("~/Content/Images/ProductImages/List/"+@product.MainImageUrl)" />
+                                <a href="@Url.Action("Details", new { id = product.ProductId })">
+                                    <img alt="@product.Title" src="@Url.Content("~/Content/Images/ProductImages/List/" + @product.MainImageUrl)" />
                                 </a>
                             </div>
                             <div>
-                                <a href="@Url.Action("Details", new { id = product.ProductId})">
+                                <a href="@Url.Action("Details", new { id = product.ProductId })">
                                     @product.Title
                                 </a>
                             </div>
@@ -54,6 +62,7 @@
                         </li>
                     }
                 </ul>
+                }
             </div>
         </div>
     </div>

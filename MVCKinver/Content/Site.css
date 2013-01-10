@@ -206,10 +206,20 @@ div.editor-field
             color:gray;
         }
 
-#restaurants img {
-    width:170px;
-    height:70px;
+#restaurants {
+text-align:center;
+
 }
+
+.restaurant {
+    height:200px;
+    padding-top:50px;
+}
+
+    .restaurant img {
+        margin:auto;
+        vertical-align:central;
+    }
 
 #kinvernav {
     float:right;

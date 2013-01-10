@@ -13,13 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MVCKinver</RootNamespace>
     <AssemblyName>MVCKinver</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,29 +40,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Pickup\LiteBlog\liteblog-97885\PickupBlog\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -93,6 +95,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
@@ -142,21 +145,249 @@
   <ItemGroup>
     <Content Include="Content\Images\404.png" />
     <Content Include="Content\Images\big.cur" />
+    <Content Include="Content\Images\GuestsImages\FLAMME.png" />
+    <Content Include="Content\Images\GuestsImages\GUNGHO.png" />
     <Content Include="Content\Images\GuestsImages\GunghoPizza_Jade.jpg" />
     <Content Include="Content\Images\GuestsImages\GunghoPizza_John.jpg" />
+    <Content Include="Content\Images\GuestsImages\IMPASTO.png" />
+    <Content Include="Content\Images\GuestsImages\STARFISH.png" />
     <Content Include="Content\Images\hero-page-one.jpg" />
     <Content Include="Content\Images\hero-page-two-text.png" />
     <Content Include="Content\Images\hero-page-two.jpg" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\logo-w240.png" />
-    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_3.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_5.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\BlackTigerShrimp_4.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Crab_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Crab_3.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Crab_4.jpg" />
+    <Content Include="Content\Images\ProductImages\List\1.jpg" />
+    <Content Include="Content\Images\ProductImages\List\10.jpg" />
+    <Content Include="Content\Images\ProductImages\List\12.jpg" />
+    <Content Include="Content\Images\ProductImages\List\13.jpg" />
+    <Content Include="Content\Images\ProductImages\List\14.jpg" />
+    <Content Include="Content\Images\ProductImages\List\15.jpg" />
+    <Content Include="Content\Images\ProductImages\List\16.jpg" />
+    <Content Include="Content\Images\ProductImages\List\17.jpg" />
+    <Content Include="Content\Images\ProductImages\List\18.jpg" />
+    <Content Include="Content\Images\ProductImages\List\19.jpg" />
+    <Content Include="Content\Images\ProductImages\List\2.jpg" />
+    <Content Include="Content\Images\ProductImages\List\20.jpg" />
+    <Content Include="Content\Images\ProductImages\List\21.jpg" />
+    <Content Include="Content\Images\ProductImages\List\22.jpg" />
+    <Content Include="Content\Images\ProductImages\List\23.jpg" />
+    <Content Include="Content\Images\ProductImages\List\24.jpg" />
+    <Content Include="Content\Images\ProductImages\List\26.jpg" />
+    <Content Include="Content\Images\ProductImages\List\27.jpg" />
+    <Content Include="Content\Images\ProductImages\List\28.jpg" />
+    <Content Include="Content\Images\ProductImages\List\29.jpg" />
+    <Content Include="Content\Images\ProductImages\List\4.jpg" />
+    <Content Include="Content\Images\ProductImages\List\6.jpg" />
+    <Content Include="Content\Images\ProductImages\List\7.jpg" />
+    <Content Include="Content\Images\ProductImages\List\8.jpg" />
+    <Content Include="Content\Images\ProductImages\List\9.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\10.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\10_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\10_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\12.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\13.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\13_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\13_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\14.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\14_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\15.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\15_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\15_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\15_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\16.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\16_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\16_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\17.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\17_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\17_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\17_3.JPG" />
+    <Content Include="Content\Images\ProductImages\Original\17_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\17_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\18.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\18_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\18_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\18_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\18_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\19_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\1_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\1_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\1_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\20_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\21_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\22.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\22_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\22_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\23.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\23_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\23_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\23_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\23_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\24_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\26.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\26_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\26_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\26_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\27_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\28.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\28_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\28_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\29.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\29_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\29_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\29_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_10.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_11.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_7.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_8.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\2_9.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\4_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\6.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\6_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\6_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\6_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\7.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\8.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\8_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\8_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\8_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\9.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\9_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\9_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Original\9_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\10.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\10_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\10_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\12.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\13.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\13_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\13_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\14.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\14_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\15.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\15_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\15_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\15_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\16.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\16_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\16_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\17.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\17_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\17_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\17_3.JPG" />
+    <Content Include="Content\Images\ProductImages\Thumb\17_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\17_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\18.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\18_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\18_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\18_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\18_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\19_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\1_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\1_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\1_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\20_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\21_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\22.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\22_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\22_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\23.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\23_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\23_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\23_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\23_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\24_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\26.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\26_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\26_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\26_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\27_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\28.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\28_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\28_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\29.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\29_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\29_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\29_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_10.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_11.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_7.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_8.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\2_9.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4_4.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\4_5.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\6.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\6_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\6_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\6_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\8.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\8_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\8_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\8_3.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\9.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\9_1.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\9_2.jpg" />
+    <Content Include="Content\Images\ProductImages\Thumb\9_3.jpg" />
     <Content Include="Content\Images\QuoteEnd.png" />
     <Content Include="Content\Images\QuoteStart.png" />
     <Content Include="Content\Images\ServiceImages\Normal\Canting.png" />
@@ -178,9 +409,6 @@
     <Content Include="Content\themes\fancybox\fancybox.css" />
     <Content Include="Content\Images\home-showcase.png" />
     <Content Include="Content\Images\hero-page.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Crab_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Daizi_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\Salmon_1.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -259,6 +487,8 @@
     <Content Include="Content\themes\fancybox\images\fancy_title_right.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\万网ftp.pubxml" />
+    <None Include="Properties\PublishProfiles\本地.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -321,8 +551,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\ProductImages\List\" />
-    <Folder Include="Content\Images\ProductImages\Thumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -348,7 +576,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>51677</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:56393/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
