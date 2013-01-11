@@ -1,4 +1,6 @@
-﻿
+﻿ul,li,dl,dd,dt{list-style-type:none;padding:0;margin:0;border:0;}
+
+
 h3 {
     color:#888;
 }

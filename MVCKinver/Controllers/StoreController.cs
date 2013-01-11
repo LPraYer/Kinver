@@ -123,7 +123,7 @@ namespace MVCKinver.Controllers
                 productModel.ProductOtherInfo = storeDB.ProductOtherInfoes.SingleOrDefault(o => o.ProductId == productModel.ProductId);
 
                 //左侧列表内容
-                this.ViewBag.productList = storeDB.Products.Where(p => p.GenreId == productModel.GenreId).Take(10).ToList();
+                this.ViewBag.productList = storeDB.Products.Where(p => p.GenreId == productModel.GenreId).Take(5).ToList();
 
 
                 return View(productModel);
