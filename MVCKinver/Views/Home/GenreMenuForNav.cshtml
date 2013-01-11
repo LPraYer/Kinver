@@ -11,11 +11,18 @@
             @rootgenre.Name
         </li>
         var levelones = Model.Where(g => g.FatherGenreId == rootgenre.GenreId).ToList();
-        foreach (var levelonegenre in levelones)
-        {
-            <li>
-                @Html.ActionLink(levelonegenre.Name, "Browse", "Store", new { Genre = levelonegenre.GenreUrl }, null)
+        if (levelones.Count() == 0){
+            <li style="padding:0 20px;font-size:0.6em;">
+                上线中…
             </li>
+        }
+        else{
+            foreach (var levelonegenre in levelones)
+            {
+                <li>
+                    @Html.ActionLink(levelonegenre.Name, "Browse", "Store", new { Genre = levelonegenre.GenreUrl }, null)
+                </li>
+            }
         }
         if (i != roots.Count())
         {

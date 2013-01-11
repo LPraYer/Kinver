@@ -12,7 +12,6 @@ namespace MVCKinver.Controllers
         KinverEntities storeDB = new KinverEntities();
         //
         // GET: /Home/
-
         public ActionResult Index()
         {
             //get most popular products
@@ -36,7 +35,8 @@ namespace MVCKinver.Controllers
         // Get: /导航栏中的分类
         public ActionResult GenreMenuForNav()
         {
-            var genres = storeDB.Genres.ToList();
+            //2013.1.11:Where(g => g.FatherGenreId == 0 || g.FatherGenreId == 2)目前只有水产类产品，所以先屏蔽掉其他类别
+            var genres = storeDB.Genres.Where(g => g.FatherGenreId == 0 || g.FatherGenreId == 2).ToList();
             return PartialView(genres);
         }
 

@@ -139,7 +139,8 @@ namespace MVCKinver.Controllers
         [ChildActionOnly]
         public ActionResult GenreMenu()
         {
-            var genres = storeDB.Genres.ToList();
+            //2013.1.11:Where(g => g.GenreId == 2 || g.FatherGenreId == 2)目前只有水产类产品，所以先屏蔽掉其他类别
+            var genres = storeDB.Genres.Where(g => g.GenreId == 2 || g.FatherGenreId == 2).ToList();
             return PartialView(genres);
         }
 

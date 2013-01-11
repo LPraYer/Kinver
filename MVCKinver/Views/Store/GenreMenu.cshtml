@@ -15,7 +15,6 @@
                 foreach (var levelonegenre in levelones)
                 {
                     <li id="@levelonegenre.GenreUrl">
-                        
                         <i class="icon-chevron-right opacity-point-twentyfive"></i>
                         @Html.ActionLink(levelonegenre.Name, "Browse", "Store", new { Genre = levelonegenre.GenreUrl }, null)
                         @*@Html.ActionLink(genre.Name, "Browse", "Store","http","localhost","test", new { Genre = genre.Name }, null)*@

@@ -256,6 +256,7 @@ text-align:center;
 }
 
 .carousel-control {
+    height:100px;
     background-color:transparent;
     border:0;
     font-size:120px;
@@ -287,9 +288,12 @@ text-align:center;
 #promotion1
 {
     height: 550px;
+    margin-top:20px;
 	margin-left:0;
     margin-right:0;
-	background: url(/content/Images/hero-page-one.jpg) center 20px,0,0,0 no-repeat ;
+    background-image:url(/content/Images/hero-page-one.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
     text-align:center;
     
 }
@@ -309,9 +313,12 @@ text-align:center;
 
 #promotion2 {
     height: 550px;
+    margin-top:20px;
 	margin-left:0;
     margin-right:0;
-	background: url(/content/Images/hero-page-two.jpg) center 20px,0,0,0 no-repeat;
+    background-image:url(/content/Images/hero-page-two.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
     text-align:left;
 }
 
