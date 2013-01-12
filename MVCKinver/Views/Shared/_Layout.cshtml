@@ -16,58 +16,59 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
+                <!--标题-->
                 <a class="brand" href="@Url.Content("~")">
-                    KINVER&nbsp;&nbsp;景悦&nbsp;&middot;&nbsp;锦辰
+                    KINVER&nbsp;&nbsp;景悦锦辰
                 </a>
-                <div class="nav-collapse collapse">
-                    <input id="menuSelected" type="hidden" value="@ViewBag.menuSelected"/>
-                    <ul id="kinvernav" class="nav">
-                        <li id="home"><a href="@Url.Content("~")" id="current">首页</a></li>
-                        @*<li class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                                服务
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="services">*@
-                                <li id="service1">
-                                    <a href="@Url.Content("~/Service/Details/1")">礼盒礼券</a>
-                                </li>
-                                @*<li id="service2">
-                                    <a href="@Url.Content("~/Service/Details/2")">企业礼券</a>
-                                </li>*@
-                                <li id="service2">
-                                    <a href="@Url.Content("~/Service/Details/2")">餐厅配送</a>
-                                </li>
-                                <li id="service3">
-                                    <a href="@Url.Content("~/Service/Details/3")">家庭配送</a>
-                                </li>
+                <!--导航-->
+                <input id="menuSelected" type="hidden" value="@ViewBag.menuSelected"/>
+                <ul id="kinvernav" class="nav">
+                    <li id="home"><a href="@Url.Content("~")" id="current">首页</a></li>
+                    @*<li class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            服务
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="services">*@
+                            <li id="service1">
+                                <a href="@Url.Content("~/Service/Details/1")">礼盒礼券</a>
+                            </li>
+                            @*<li id="service2">
+                                <a href="@Url.Content("~/Service/Details/2")">企业礼券</a>
+                            </li>*@
+                            <li id="service2">
+                                <a href="@Url.Content("~/Service/Details/2")">餐厅配送</a>
+                            </li>
+                            <li id="service3">
+                                <a href="@Url.Content("~/Service/Details/3")">家庭配送</a>
+                            </li>
 
-                            @*</ul>
-                        </li>*@
-                        <li id="store" class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                                商品
-                                <b class="caret"></b>
-                            </a>
-                            <!--商品下拉菜单-->
-                            @{Html.RenderAction("GenreMenuForNav","Home");}
-                        </li>
-                        @*<li>
-                            @{Html.RenderAction("CartSummary","ShoppingCart");}
-                        </li>*@
-                    </ul>
-                </div>
+                        @*</ul>
+                    </li>*@
+                    <li id="store" class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            商品
+                            <b class="caret"></b>
+                        </a>
+                        <!--商品下拉菜单-->
+                        @{Html.RenderAction("GenreMenuForNav","Home");}
+                    </li>
+                    @*<li>
+                        @{Html.RenderAction("CartSummary","ShoppingCart");}
+                    </li>*@
+                </ul>
+
             </div>
         </div>
     </div>
     
 
-    <div class="dropdown">
+@*    <div class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown trigger</a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     ...
   </ul>
-</div>
+</div>*@
 
 
 
