@@ -30,6 +30,11 @@ ul#product-list li a span
 	text-decoration: underline;
 }
     /*列表图片大小适应两种分辨率*/
+
+    ul#product-list li {
+        width:240px;
+    }
+
     ul#product-list img {
         width:240px;
     }
