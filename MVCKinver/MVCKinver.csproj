@@ -144,6 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\count_jian.jpg" />
+    <Content Include="Content\Images\count_zeng.jpg" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\contactMobile.png" />
     <Content Include="Content\Images\contactPhone.png" />
