@@ -52,9 +52,9 @@
 </script>
 <div class="container container-margin-top">
     <div class="row">
-        <div class="span8">
+        <div class="span9">
             <h3>
-                您的购物车:
+                您的购物车
             </h3>
             <div id="update-message">
             </div>
@@ -62,10 +62,10 @@
                 <thead>
                     <tr>
                         <th>产品名称</th>
-                        <th>产品规格</th>
-                        <th>单价</th>
-                        <th>数量</th>
-                        <th>操作</th>
+                        <th style="text-align:center;">产品规格</th>
+                        <th style="text-align:center;">单价</th>
+                        <th style="text-align:center;">数量</th>
+                        <th style="text-align:center;">操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,16 +75,30 @@
                             <td>
                                 @Html.ActionLink(item.Product.Title, "Details", "Store", new { id = item.Product.ProductId }, null)
                             </td>
-                            <td>
-                                @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).NetWeightPerUnit 克 / @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).SaleUnit <span class="muted">（ @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).Size ）</span>
+                            <td style="text-align:center;">
+                                @item.ProductSize.NetWeightPerUnit 克 / @item.ProductSize.SaleUnit <span class="muted"> @item.ProductSize.Size</span>
                             </td>
-                            <td>
-                                @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).PricePerUnit 元 / @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).SaleUnit
+                            <td style="text-align:center;">
+                                @item.ProductSize.PricePerUnit 元 / @item.ProductSize.SaleUnit
                             </td>
-                            <td id="item-count-@item.RecordId">
-                                @item.Count @item.Product.ProductSizes.SingleOrDefault(ps => ps.ProductSizeId == item.Product.ProductSizes.FirstOrDefault().ProductSizeId).SaleUnit
+                            <td id="item-count-@item.RecordId" style="text-align:center;">
+                                <span>
+                                    <a href="javascript:change_num_jian('@item.RecordId','1');">
+                                        <img src="/Content/Images/count_jian.jpg" style="margin-top:-2px;" />
+                                    </a>
+                                </span>
+                                <input id="count-@item.RecordId" 
+                                    type="text" value="@item.Count" 
+                                    style="width:30px;margin:-3px 0 0 0;padding:1px;text-align:center;height:16px;" maxlength="3"
+                                    onkeyup="javascript:change_num('@item.RecordId','1');"/>
+                                <span>
+                                    <a href="javascript:change_num_zeng('@item.RecordId','1');">
+                                        <img src="/Content/Images/count_zeng.jpg" style="margin-top:-2px;" />
+                                    </a>
+                                </span>
+                                @item.ProductSize.SaleUnit
                             </td>
-                            <td>
+                            <td style="text-align:center;">
                                 <a href="#" class="RemoveLink" data-id="@item.RecordId">删除</a>
                             </td>
                         </tr>
@@ -92,7 +106,7 @@
                     <tr style="font-size:larger;">
                         <td>
                             总额：
-                            <span id="cart-total">@Model.CartTotal</span>
+                            <span id="cart-total">@Model.CartTotal</span>元
                         </td>
                         <td>
                         </td>
@@ -106,5 +120,48 @@
                 <a href="/Checkout/AddressAndPayment/" class="btn btn-primary btn-large" style="color:white;">下订单 >></a>
             </div>
         </div>
+        <div class="span3">
+            <h3>
+                购物须知
+            </h3>
+            <p>购物须知购物须知购物须知购物须知购物须知购物须知购物须知购物须知</p>
+            <p class="muted">购物须知购物须知购物须知购物须知购物须知购物须知购物须知购物须知</p>
+        </div>
     </div>
 </div>
+<script type="text/javascript" charset="utf-8">
+    function change_num_zeng(id, s_num) {
+        var num = parseInt(document.getElementById('count-' + id).value) + 1;
+        if (num < s_num) {
+            alert('此商品最少订购' + s_num + '份');
+        } else if (num >= s_num) {
+            document.getElementById('count-' + id).value = num;
+            //Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
+        } else {
+            alert('商品数量不能小于1');
+        }
+    }
+    function change_num_jian(id, s_num) {
+        var num = parseInt(document.getElementById('count-' + id).value) - 1;
+        if (num < s_num) {
+            alert('此商品最少订购' + s_num + '份');
+        } else if (num >= s_num) {
+            document.getElementById('count-' + id).value = num;
+            //Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
+        } else {
+            alert('商品数量不能小于1');
+        }
+    }
+    //直接输入数量
+    function change_num(id, s_num) {
+        var num = parseInt(document.getElementById('count-' + id).value);
+        if (num < s_num) {
+            alert('此商品最少订购' + s_num + '份');
+        } else if (num >= s_num) {
+            Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
+        } else {
+            alert('请填写数字');
+        }
+
+    }
+</script>

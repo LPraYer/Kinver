@@ -9,9 +9,10 @@ namespace MVCKinver.Models
         public int RecordId { get; set; }
         public string CartId { get; set; }
         public int ProductId { get; set; }
+        public int ProductSizeId { get; set; }
         public int Count { get; set; }
         public DateTime DateCreated { get; set; }
         public virtual Product Product { get; set; }
-        //public virtual ProductSize ProductSize { get; set; }
+        public virtual ProductSize ProductSize { get; set; }
     }
 }

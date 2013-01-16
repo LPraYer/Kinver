@@ -32,13 +32,14 @@ namespace MVCKinver.Models
             //获得匹配的购物车和产品实例
             var cartItem = storeDB.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ProductId == productsize.ProductSizeId);
+                && c.ProductSizeId == productsize.ProductSizeId);
             if (cartItem == null)
             {
                 //如果没有购物车实例则创建一个新的
                 cartItem = new Cart
                 {
-                    ProductId = productsize.ProductSizeId,
+                    ProductSizeId = productsize.ProductSizeId,
+                    ProductId = productsize.ProductId,
                     CartId = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now
@@ -93,11 +94,8 @@ namespace MVCKinver.Models
             var cartItems = storeDB.Carts.Where(cart => cart.CartId == ShoppingCartId).ToList();
             foreach (var cartItem in cartItems)
             {
-                //这里比较绕，先填充产品规格，然后找到产品id，然后再填充产品，并重新填充产品规格
-                var pss = storeDB.ProductSizes.Where(ps => ps.ProductSizeId == cartItem.ProductId).ToList();
-                var pId = pss.Find(ps => ps.ProductSizeId == cartItem.ProductId).ProductId;
-                cartItem.Product = storeDB.Products.Find(pId);
-                cartItem.Product.ProductSizes = storeDB.ProductSizes.Where(ps => ps.ProductSizeId == cartItem.ProductId).ToList();
+                cartItem.Product = storeDB.Products.Find(cartItem.ProductId);
+                cartItem.ProductSize = storeDB.ProductSizes.Find(cartItem.ProductSizeId);
             }
             return cartItems;
         }
@@ -114,11 +112,10 @@ namespace MVCKinver.Models
         public decimal GetTotal()
         { 
             //统计产品总价
-            //decimal? total = (from cartItems in storeDB.Carts
-            //                  where cartItems.CartId == ShoppingCartId
-            //                  select (int?)cartItems.Count * cartItems.Product.Price).Sum();
-            //return total ?? decimal.Zero;
-            return 0;
+            decimal? total = (from cartItems in storeDB.Carts
+                              where cartItems.CartId == ShoppingCartId
+                              select (int?)cartItems.Count * cartItems.ProductSize.PricePerUnit).Sum();
+            return total ?? decimal.Zero;
         }
 
         public int CreateOrder(Order order)
@@ -130,7 +127,7 @@ namespace MVCKinver.Models
             {
                 var orderDetail = new OrderDetail
                 {
-                    ProductId = item.ProductId,
+                    ProductId = item.ProductSizeId,
                     OrderId = order.OrderId,
                     //UnitPrice = item.Product.Price,
                     Quantity = item.Count

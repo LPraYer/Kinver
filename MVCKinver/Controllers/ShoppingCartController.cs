@@ -33,10 +33,10 @@ namespace MVCKinver.Controllers
             //实际添加到购物车的是产品型号
             //var addedProduct = storeDB.Products.Single(
             //    product => product.ProductId == id);
-            var addedProduct = storeDB.ProductSizes.Single(
+            var addedProductSize = storeDB.ProductSizes.Single(
                 ps => ps.ProductSizeId == id);
             var cart = ShoppingCart.GetCart(this.HttpContext);
-            cart.AddToCart(addedProduct);
+            cart.AddToCart(addedProductSize);
             return RedirectToAction("Index");
         }
 
@@ -45,8 +45,8 @@ namespace MVCKinver.Controllers
         public ActionResult RemoveFromCart(int id)
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
-            string productName = storeDB.Carts.Single(
-                item => item.RecordId == id).Product.Title;
+            var pId = storeDB.Carts.Single(c => c.RecordId == id).ProductId;
+            string productName = storeDB.Products.Single(p => p.ProductId == pId).Title;
             int itemCount = cart.RemoveFromCart(id);
             var results = new ShoppingCartRemoveViewModel
             {
