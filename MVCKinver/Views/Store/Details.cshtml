@@ -15,11 +15,11 @@
                     @{
                         //获得同类前十位产品
                         var productList = ViewBag.productList;
-                        
+
                         foreach (var product in productList)
                         {
                             //如果为当前产品，则显示为选中效果
-                            if(product.ProductId != Model.ProductId)
+                            if (product.ProductId != Model.ProductId)
                             {
                                 <li>
                                     <i class="icon-chevron-right opacity-point-twentyfive"></i>
@@ -42,17 +42,23 @@
                             <li>
                                 <i class="icon-chevron-right opacity-point-twentyfive"></i>
 
-                                @Html.ActionLink("更多" + @Model.Genre.Name + "类产品", "Browse", "Store", new { Genre = Model.Genre.GenreUrl},null)
+                                @Html.ActionLink("更多" + @Model.Genre.Name + "类产品", "Browse", "Store", new { Genre = Model.Genre.GenreUrl }, null)
                             </li>
                         }
                     }
                 </ul>
+                <div style="line-height:1em;padding-left:10px;margin-top:30px;color:#666;">
+                <p style="font-size:1.2em;margin-bottom:20px;"><b>订购电话</b></p>
+                <p style="font-family:Georgia;"><img src="/Content/Images/contactPhone.png" title="固定电话" style="margin-top:-2px;" /> 010-82226488</p>
+                <p style="font-family:Georgia;"><img src="/Content/Images/contactMobile.png" title="移动电话" style="margin-top:-1px;" /> 13811856086</p>
+            </div>
             </div>
         </div>
         <div id="product-details" class ="span10">
             <div id="product-details-services">
-                @foreach(var p in Model.Services){
-                    <img class ="on" title="支持 @p.Title 服务" src="@Url.Content("~/Content/Images/ServiceImages/Small/"+@p.ServiceImageUrl)" />
+                @foreach (var p in Model.Services)
+                {
+                    <img class ="on" title="支持 @p.Title 服务" src="@Url.Content("~/Content/Images/ServiceImages/Small/" + @p.ServiceImageUrl)" />
                 }
                 @*<img class="on" title="礼盒" src="@Url.Content("~/Content/Images/placeholder.gif")" />
                 <img class="on" title="礼券" src="@Url.Content("~/Content/Images/placeholder.gif")" />
@@ -76,17 +82,18 @@
             <div id="product-details-images" class="row">
                 @*主图*@
                 <div class="span2">
-                    <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/"+@Model.MainImageUrl)" title="@Model.Title">
-                        <img class="bigcursor" alt="@Model.Title" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@Model.MainImageUrl)" />
+                    <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/" + @Model.MainImageUrl)" title="@Model.Title">
+                        <img class="bigcursor" alt="@Model.Title" src="@Url.Content("~/Content/Images/ProductImages/Thumb/" + @Model.MainImageUrl)" />
                     </a>
                 </div>
                 @*附图*@
-                @if(@Model.ProductImages != null){
-                    foreach( var image in @Model.ProductImages)
+                @if (@Model.ProductImages != null)
+                {
+                    foreach (var image in @Model.ProductImages)
                     {
                         <div class ="span2">
-                            <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/"+@image.ProductImageUrl)" title ="@image.ProductImageTitle">
-                                <img class="bigcursor" alt="@image.ProductImageTitle" src="@Url.Content("~/Content/Images/ProductImages/Thumb/"+@image.ProductImageUrl)" />
+                            <a rel="group" href="@Url.Content("~/Content/Images/ProductImages/Original/" + @image.ProductImageUrl)" title ="@image.ProductImageTitle">
+                                <img class="bigcursor" alt="@image.ProductImageTitle" src="@Url.Content("~/Content/Images/ProductImages/Thumb/" + @image.ProductImageUrl)" />
                             </a>
                         </div>
                     }
@@ -104,33 +111,39 @@
                     </caption>
                     <thead>
                         <tr>
-                            <td style="text-align:left;padding-left:20px;width:25%;">
+                            <th style="text-align:left;padding-left:20px;/*width:25%;*/">
                                 规格&nbsp;
                                 <i id="guigehelp" data-placement="right" data-original-title="@Model.SizeDescription" class="icon-question-sign tooltip-icon"></i>
                             <script type="text/javascript">
                                 $('#guigehelp').tooltip()
                             </script>
-                            </td>
-                            <td style="text-align:right;padding-right:20px;">包装方式及净重</td>
-                            <td style="text-align:right;padding-right:20px;">价格</td>
-                            <td></td>
+                            </th>
+                            <th style="text-align:right;padding-right:20px;/*width:15%;*/">包装方式及净重</th>
+                            <th style="text-align:right;padding-right:20px;/*width:30%;*/">价格</th>
+                            <th style="/*width:30%;*/"></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var s in Model.ProductSizes){
+                        @foreach (var s in Model.ProductSizes)
+                        {
                         <tr>
-                            <td style="text-align:left;padding-left:20px;width:25%;">
+                            <td style="text-align:left;padding-left:20px;">
                                 @s.Size
                             </td>
-                            <td style="text-align:right;padding-right:20px;width:15%;">
+                            <td style="text-align:right;padding-right:20px;">
                                 @s.NetWeightPerUnit 克 / @s.SaleUnit
                             </td>
-                            <td style="text-align:right;padding-right:20px;width:30%;">
+                            <td style="text-align:right;padding-right:20px;">
                                 ￥ @s.PricePerUnit 元
                                 
                             </td>
-                            <td class="muted" style="text-align:left; padding-left:20px;width:30%;">
+                            <td class="muted" style="text-align:left; padding-left:20px;">
                                 ￥ @s.PricePerKG 元 / 千克
+                            </td>
+                            <td style="padding:5px;">
+                                    @*实际添加到购物车的是产品型号*@
+                                    <a href="/ShoppingCart/AddToCart/@s.ProductSizeId" class="btn btn-primary btn-small" style="color:white;"><img src="../../Content/Images/cart.png" style="margin-top:-5px;margin-right:5px;" />添加到购物车</a>
                             </td>
                         </tr>
                         }
@@ -138,7 +151,8 @@
                 </table>
             </div>
             <div class="row">
-                @if(@Model.ProductValue != null){
+                @if (@Model.ProductValue != null)
+                {
                     <div id="product-details-value" class="span5">
                         <h4 class="product-details-label">
                             营养价值
@@ -185,7 +199,8 @@
                         </table>
                     </div>
                 }
-                @if(@Model.ProductOtherInfo != null){
+                @if (@Model.ProductOtherInfo != null)
+                {
                     <div id="product-details-other" class="span5">
                         <h4 class="product-details-label">
                             其它说明
@@ -198,31 +213,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(@Model.ProductOtherInfo.TransportTemperature != null){
+                                @if (@Model.ProductOtherInfo.TransportTemperature != null)
+                                {
                                     <tr>
                                         <td>运输温度</td>
                                         <td>@Model.ProductOtherInfo.TransportTemperature</td>
                                     </tr>
                                 }
-                                @if(@Model.ProductOtherInfo.StorageTemperature != null){
+                                @if (@Model.ProductOtherInfo.StorageTemperature != null)
+                                {
                                     <tr>
                                         <td>仓储温度</td>
                                         <td>@Model.ProductOtherInfo.StorageTemperature</td>
                                     </tr>
                                 }
-                                @if(@Model.ProductOtherInfo.ExpiryTime != null){
+                                @if (@Model.ProductOtherInfo.ExpiryTime != null)
+                                {
                                 <tr>
                                     <td>保质期</td>
                                     <td>@Model.ProductOtherInfo.ExpiryTime</td>
                                 </tr>
                                 }
-                                @if(@Model.ProductOtherInfo.AfterDefrosting != null){
+                                @if (@Model.ProductOtherInfo.AfterDefrosting != null)
+                                {
                                 <tr>
                                     <td>解冻说明</td>
                                     <td>@Model.ProductOtherInfo.AfterDefrosting</td>
                                 </tr>
                                 }
-                                @if(@Model.ProductOtherInfo.ThawingMethod != null){
+                                @if (@Model.ProductOtherInfo.ThawingMethod != null)
+                                {
                                 <tr>
                                     <td>解冻方式</td>
                                     <td>@Model.ProductOtherInfo.ThawingMethod</td>
@@ -233,7 +253,8 @@
                     </div>
                 }
             </div>
-            @if(@Model.Dishes != null){
+            @if (@Model.Dishes != null)
+            {
                 <div id="product-details-cook">
                     <h4 class="product-details-label">
                         烹饪方法
@@ -247,7 +268,8 @@
                                         @d.Title
                                     </h5>
                                 </div>
-                                @if(d.Intro != ""){
+                                @if (d.Intro != "")
+                                {
                                 <p style="text-indent:2em;">
                                     @d.Intro
                                 </p>
@@ -259,7 +281,8 @@
                                         { 
                                             <span class="label label-info" style="margin-right:10px;">
                                                 @m.Name
-                                                @if(m.Weight != ""){
+                                                @if (m.Weight != "")
+                                                {
                                                    <span class="muted">( @m.Weight )</span>
                                                 }
                                             </span>
@@ -277,7 +300,8 @@
                                         }
                                     </ol>
                                 </div>
-                                @if(d.Remark != ""){
+                                @if (d.Remark != "")
+                                {
                                     <p class="muted">
                                         * @d.Remark
                                     </p>
@@ -287,7 +311,7 @@
                     </ul>
                 </div>
             }
-            <div class="bshare-custom">
+            <div class="bshare-custom" style="margin-top:30px;">
                 分享：
                 <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
                 <a title="分享到腾讯微博" class="bshare-qqmb"></a>
@@ -296,36 +320,23 @@
             </div>
             <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
             <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
             <script type="text/javascript" charset="utf-8">
+                var description = "@Model.Description";
+                if(description.length <= 70)
+                {
+                    var summarystring = description ;
+                }
+                else
+                {
+                    var summarystring = description.substring(0,70) + "..." ;
+                }
                 bShare.addEntry({
-                    summary: "@Request.Url.Host" + ":" + "@Request.Url.Port" + "@Model.MainImageUrl",
-                    pic: "@Request.Url.Host" + ":" + "@Request.Url.Port" + "@Model.MainImageUrl"
+                    title: "#景悦锦辰甄选食材#" + "@Model.Title",
+                    summary: summarystring 
                 });
             </script>
-            @*<h2>
-                @Model.Title
-            </h2>
-            <p>
-                <img alt="@Model.Title" src="@Model.ProductImageUrl" />
-            </p>
-            <div id="product-details">
-                <p>
-                    <em>类别：</em>
-                    @Model.Genre.Name
-                </p>
-                <p>
-                    <em>供应商：</em>
-                    @Model.Producer.Name
-                </p>
-                <p>
-                    <em>价格:</em>
-                    @String.Format("{0:F}",Model.Price)
-                </p>
-                <p class="button">
-                    @Html.ActionLink("添加到购物车", "AddToCart", "ShoppingCart", new { id = Model.ProductId },"")
-                </p>
-            </div>
-            *@
+
         </div>
     </div>
     <link href="@Url.Content("~/Content/themes/fancybox/fancybox.css")" rel="stylesheet" type="text/css" />

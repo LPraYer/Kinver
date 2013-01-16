@@ -27,18 +27,18 @@ namespace MVCKinver.Models
             return GetCart(controller.HttpContext);
         }
 
-        public void AddToCart(Product product)
+        public void AddToCart(ProductSize productsize)
         { 
             //获得匹配的购物车和产品实例
             var cartItem = storeDB.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ProductId == product.ProductId);
+                && c.ProductId == productsize.ProductSizeId);
             if (cartItem == null)
             {
                 //如果没有购物车实例则创建一个新的
                 cartItem = new Cart
                 {
-                    ProductId = product.ProducerId,
+                    ProductId = productsize.ProductSizeId,
                     CartId = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now
@@ -47,7 +47,7 @@ namespace MVCKinver.Models
             }
             else
             { 
-                //如果已经存在一个购物车，则增加对应唱片的数量
+                //如果已经存在一个购物车，则增加对应产品（及规格）的数量
                 cartItem.Count ++;
             }
             //保存更改
@@ -90,7 +90,16 @@ namespace MVCKinver.Models
 
         public List<Cart> GetCartItems()
         {
-            return storeDB.Carts.Where(cart => cart.CartId == ShoppingCartId).ToList();
+            var cartItems = storeDB.Carts.Where(cart => cart.CartId == ShoppingCartId).ToList();
+            foreach (var cartItem in cartItems)
+            {
+                //这里比较绕，先填充产品规格，然后找到产品id，然后再填充产品，并重新填充产品规格
+                var pss = storeDB.ProductSizes.Where(ps => ps.ProductSizeId == cartItem.ProductId).ToList();
+                var pId = pss.Find(ps => ps.ProductSizeId == cartItem.ProductId).ProductId;
+                cartItem.Product = storeDB.Products.Find(pId);
+                cartItem.Product.ProductSizes = storeDB.ProductSizes.Where(ps => ps.ProductSizeId == cartItem.ProductId).ToList();
+            }
+            return cartItems;
         }
 
         public int GetCount()

@@ -23,14 +23,18 @@ namespace MVCKinver.Controllers
                 CartItems = cart.GetCartItems(),
                 CartTotal = cart.GetTotal()
             };
+
             return View(viewModel);
         }
 
         // Get:/Store/AddToCart/5
         public ActionResult AddToCart(int id)
         {
-            var addedProduct = storeDB.Products.Single(
-                product => product.ProductId == id);
+            //实际添加到购物车的是产品型号
+            //var addedProduct = storeDB.Products.Single(
+            //    product => product.ProductId == id);
+            var addedProduct = storeDB.ProductSizes.Single(
+                ps => ps.ProductSizeId == id);
             var cart = ShoppingCart.GetCart(this.HttpContext);
             cart.AddToCart(addedProduct);
             return RedirectToAction("Index");

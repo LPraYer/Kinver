@@ -43,6 +43,10 @@ ul#product-list li a span
         ul#product-list img {
             width:300px;
         }
+
+        ul#product-list li {
+        width:300px;
+    }
     }
 
 /*图片的鼠标悬浮过渡*/
@@ -161,7 +165,7 @@ div.editor-field
 */
 
 #main {
-    min-height:500px;
+    min-height:700px;
 }
 
 #services h3,
@@ -233,7 +237,7 @@ text-align:center;
 }
 
 .container-margin-top {
-    margin-top:50px;
+    margin-top:80px;
 }
 
 #footer-copyright {
@@ -369,10 +373,13 @@ h4.product-details-label {
 #product-details-services {
     float:right;
     margin-top:10px;
+    height:50px;
+    width:260px;
 }
 
     #product-details-services img {
-        margin-left:10px;
+        margin-right:10px;
+        display:inline;
     }
 
 #product-details-intro {

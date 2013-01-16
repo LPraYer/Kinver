@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <head>
     <meta charset="utf-8" />
-    <!--基本兼容ie8以上浏览器-->
+    <!--基本兼容ie8以上浏览器，使用可选的最高的ie渲染模式-->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
     <title>@ViewBag.Title</title>
+    <meta name="keywords" content="kinver,景悦锦辰,北京景悦锦辰贸易有限公司,海鲜,海产品,冻品,高品质食品,北京,礼盒,礼券,餐厅配送,酒店配送,帝王蟹,黑虎虾,三文鱼,金枪鱼,鳕鱼,进口,美国,加拿大,新西兰,澳大利亚,欧洲,食品,美食,食材" />
+    <meta name="description" content="北京景悦锦辰贸易有限公司致力于将美国、加拿大、澳大利亚、新西兰以及欧盟国家的高品质食品带给国内消费者，公司产品涵盖海产（阿拉斯加帝王蟹、加拿大龙虾、加拿大带子、越南黑虎虾、挪威三文鱼、法国银鳕鱼等高端进口海产品）、肉制品（澳洲和牛、美国安格斯牛肉、新西兰羊排、西班牙猪肉等）、油料（西班牙橄榄油、意大利橄榄油、葡萄籽油等），我们追求0添加、高品质的食材。" />
+    <link rel="icon" type="image/x-icon" href="/Content/Images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico" />
     <link href="@Url.Content("~/Content/themes/bootstrap/bootstrap.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/themes/bootstrap/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
@@ -53,9 +57,9 @@
                         <!--商品下拉菜单-->
                         @{Html.RenderAction("GenreMenuForNav","Home");}
                     </li>
-                    @*<li>
+                    <li>
                         @{Html.RenderAction("CartSummary","ShoppingCart");}
-                    </li>*@
+                    </li>
                 </ul>
 
             </div>
@@ -81,7 +85,7 @@
                 <a href="@Url.Content("~/Home/About/")">关于景悦锦辰</a>
                 <span></span>
                 <a href="@Url.Content("~/Home/ContactUs/")">联系我们</a>
-                <span></span>
+                @*<span></span>
                 <a>常见问题</a>
                 <span></span>
                 <a>配送说明</a>
@@ -89,14 +93,17 @@
                 <a>付款说明</a>
                 <span></span>
                 <a>新浪微博</a>
-                <span></span>
+                <span></span>*@
+                <span style="color:#666;">
+                <span ><img src="/Content/Images/contactPhone.png" title="固定电话" style="margin-top:-2px;" /> 010-82226488</span>
+                <span ><img src="/Content/Images/contactMobile.png" title="移动电话" style="margin-top:-1px;" /> 13811856086</span>
+            </span>
             </div>
             <div id="footer-copyright">
                 <span>北京景悦锦辰贸易有限公司</span>
                 <span>Copyright&copy;2012</span>
-                <span>京ICP证010101号</span>
-                <span>京公网安备111111111111号</span>
-                <span>工商注册号111111111111111</span>
+                <span>京ICP备12044025号</span>
+                <span>工商注册号110108015117522</span>
             </div>
         </div>
     </div>
