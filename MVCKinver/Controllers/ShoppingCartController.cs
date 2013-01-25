@@ -50,12 +50,69 @@ namespace MVCKinver.Controllers
             int itemCount = cart.RemoveFromCart(id);
             var results = new ShoppingCartRemoveViewModel
             {
-                Message = Server.HtmlEncode(productName) +
-                "已被从购物车中清除。",
+                Message = "* " + Server.HtmlEncode(productName) +
+                "已被从购物车中清除",
                 CartTotal = cart.GetTotal(),
                 CartCount = cart.GetCount(),
                 ItemCount = itemCount,
-                DeleteId = id
+                EditId = id
+            };
+            return Json(results);
+        }
+
+        //Ajax: /ShoppingCart/Jia/5
+        [HttpPost]
+        public ActionResult Jia(int id)
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var pId = storeDB.Carts.Single(c => c.RecordId == id).ProductId;
+            //string productName = storeDB.Products.Single(p => p.ProductId == pId).Title;
+            int itemCount = cart.Jia(id);
+            var results = new ShoppingCartRemoveViewModel
+            {
+                Message = "",
+                CartTotal = cart.GetTotal(),
+                CartCount = cart.GetCount(),
+                ItemCount = itemCount,
+                EditId = id
+            };
+            return Json(results);
+        }
+
+        //Ajax: /ShoppingCart/Jian/5
+        [HttpPost]
+        public ActionResult Jian(int id)
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var pId = storeDB.Carts.Single(c => c.RecordId == id).ProductId;
+            //string productName = storeDB.Products.Single(p => p.ProductId == pId).Title;
+            int itemCount = cart.Jian(id);
+            var results = new ShoppingCartRemoveViewModel
+            {
+                Message = "",
+                CartTotal = cart.GetTotal(),
+                CartCount = cart.GetCount(),
+                ItemCount = itemCount,
+                EditId = id
+            };
+            return Json(results);
+        }
+
+        //Ajax: /ShoppingCart/EditCount/5
+        [HttpPost]
+        public ActionResult EditCount(int id,int count)
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var pId = storeDB.Carts.Single(c => c.RecordId == id).ProductId;
+            //string productName = storeDB.Products.Single(p => p.ProductId == pId).Title;
+            int itemCount = cart.EditCount(id,count);
+            var results = new ShoppingCartRemoveViewModel
+            {
+                Message = "",
+                CartTotal = cart.GetTotal(),
+                CartCount = cart.GetCount(),
+                ItemCount = itemCount,
+                EditId = id
             };
             return Json(results);
         }
@@ -66,7 +123,14 @@ namespace MVCKinver.Controllers
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
             ViewData["CartCount"] = cart.GetCount();
-            return PartialView("CartSummary");
+            if (cart.GetCount() > 0)
+            {
+                return PartialView("CartSummary");
+            }
+            else {
+                return null;
+            }
+            
         }
     }
 }

@@ -20,7 +20,7 @@ namespace MVCKinver.Controllers
             {
                 //p.ProductImages = storeDB.ProductImages.Where(i => i.ProductId == p.ProductId).ToList();
                 p.ProductSizes = storeDB.ProductSizes.Where(i => i.ProductId == p.ProductId).ToList();
-                
+                p.Area = storeDB.Areas.Find(p.AreaId);
             };
             this.ViewBag.menuSelected = "home";
             return View(products);

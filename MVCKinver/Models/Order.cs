@@ -14,47 +14,57 @@ namespace MVCKinver.Models
         [ScaffoldColumn(false)]
         public int OrderId { get; set; }
 
-        [Required(ErrorMessage = "User Name is required")]
-        [DisplayName("User Name")]
+        [DisplayName("省、市")]
+        public string City1 { get; set; }
+
+        [DisplayName("市、区")]
+        public string City2 { get; set; }
+
+        [DisplayName("区")]
+        public string City3 { get; set; }
+
+        [Required(ErrorMessage = "* 请填写联系人姓名")]
+        [DisplayName("联系人姓名")]
         [StringLength(160)]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Address is required")]
+        [Required(ErrorMessage = "* 请填写详细地址")]
+        [DisplayName("详细地址")]
         [StringLength(70)]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "City is required")]
-        [StringLength(40)]
-        public string City { get; set; }
-
-        [Required(ErrorMessage = "State is required")]
-        [StringLength(40)]
-        public string State { get; set; }
-
-        [Required(ErrorMessage = "Postal Code is required")]
-        [DisplayName("Postal Code")]
+        [DisplayName("邮编")]
         public string PostalCode { get; set; }
 
-        [Required(ErrorMessage = "Country is required")]
-        [StringLength(40)]
-        public string Country { get; set; }
-
-        [Required(ErrorMessage = "Phone is required")]
         [StringLength(24)]
-        public string Phone { get; set; }
+        [DisplayName("联系电话")]
+        [Required(ErrorMessage = "* 请填写联系电话")]
+        public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Email Address is required")]
-        [DisplayName("Email Address")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",ErrorMessage = "Email is is not valid.")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        [StringLength(24)]
+        public string Mobile { get; set; }
+
+        [StringLength(24)]
+        public string BestDeliverTime { get; set; }
+
+        [StringLength(24)]
+        public string DeliverDay { get; set; }
 
         [ScaffoldColumn(false)]
+        //[Range(100,100000)]
         public decimal Total { get; set; }
 
         [ScaffoldColumn(false)]
         public System.DateTime OrderDate { get; set; }
 
         public List<OrderDetail> OrderDetails { get; set; } 
+
+        //[Required(ErrorMessage = "请填写联系邮箱")]
+        //[DisplayName("Email Address")]
+        //[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",ErrorMessage = "Email is is not valid.")]
+        //[DataType(DataType.EmailAddress)]
+        //public string Email { get; set; }
+
+        
     }
 }

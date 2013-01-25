@@ -5,59 +5,13 @@
 }
 
 <script src ="/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        //Document.ready -> link up remove event handler
-        $(".RemoveLink").click(function () {
-            //Get the id from the link
-            var recordToDelete = $(this).attr("data-id");
-            if (recordToDelete != "") {
-                //Perform the ajax post
-                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
-                    function (data) {
-                        //Successful requests get here
-                        //Updata the page elements
-                        if (data.ItemCount == 0) {
-                            $('#row-' + data.DeleteId).fadeOut('slow');
-                        }
-                        else {
-                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                        }
-                        $('#cart-total').text(data.CartTotal);
-                        $('#update-message').text(data.Message);
-                        $('#cart-status').text('Cart(' + data.CartCount + ')');
-                    }
-                    );
-            }
-        }
 
-        );
-    });
-    function handleUpdate()
-    {
-        //Load and deserialize the returned JSON data
-        var json = context.get_data();
-        var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
-        //Update the page elements
-        if (data.ItemCount == 0) {
-            $('#row-' + data.DeleteId).fadeOut('slow');
-        }
-        else {
-            $('#item-count-' + data.DeleteId).text(data.ItemCount);
-        }
-        $('#cart-total').text(data.CartTotal);
-        $('#update-message').text(data.Message);
-        $('#cart-status').text('Cart('+data.CartCount+')');
-    }
-</script>
 <div class="container container-margin-top">
     <div class="row">
         <div class="span9">
             <h3>
                 您的购物车
             </h3>
-            <div id="update-message">
-            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -79,7 +33,7 @@
                                 @item.ProductSize.NetWeightPerUnit 克 / @item.ProductSize.SaleUnit <span class="muted"> @item.ProductSize.Size</span>
                             </td>
                             <td style="text-align:center;">
-                                @item.ProductSize.PricePerUnit 元 / @item.ProductSize.SaleUnit
+                                <b style="color:#ff6a00;">@item.ProductSize.PricePerUnit</b> 元 / @item.ProductSize.SaleUnit
                             </td>
                             <td id="item-count-@item.RecordId" style="text-align:center;">
                                 <span>
@@ -104,9 +58,9 @@
                         </tr>
                     }
                     <tr style="font-size:larger;">
-                        <td>
+                        <td style="padding:20px 0;">
                             总额：
-                            <span id="cart-total">@Model.CartTotal</span>元
+                            <b id="cart-total" style="color:#ff6a00;">@Model.CartTotal</b>元
                         </td>
                         <td>
                         </td>
@@ -116,52 +70,182 @@
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <a href="/Checkout/AddressAndPayment/" class="btn btn-primary btn-large" style="color:white;">下订单 >></a>
+            <div style="float:left;">
+                <a id="submit" href="javascript:;" class="btn btn-primary btn-large disabled" style="color:white;">下订单 >></a>
+            </div>
+            <div style="float:left;margin-left:40px;margin-top:10px;">
+                <span id="notenough">* 单笔订单满100元起送</span>
+                <span id="update-message" style="margin-left:20px;"></span>
             </div>
         </div>
         <div class="span3">
             <h3>
                 购物须知
             </h3>
-            <p>购物须知购物须知购物须知购物须知购物须知购物须知购物须知购物须知</p>
-            <p class="muted">购物须知购物须知购物须知购物须知购物须知购物须知购物须知购物须知</p>
+            <p>在线订购业务目前仅支持北京地区的家庭用户，<a href="/Service/Details/1" target="_blank">礼盒礼券</a>和<a href="/Service/Details/2" target="_blank">餐厅配送</a>业务咨询请到对应页面查看详询方式。</p>
+            <p>在线订购业务支持货到付款，暂不支持在线支付。</p>
+            <p>订单满100元起送。</p>
+            <p>目前所有产品配送免运费！</p>
+            <p class="muted">如果您在购物过程中，有任何疑问，欢迎致电010-82226488咨询。</p>
         </div>
     </div>
 </div>
 <script type="text/javascript" charset="utf-8">
+    //点击加号
     function change_num_zeng(id, s_num) {
         var num = parseInt(document.getElementById('count-' + id).value) + 1;
         if (num < s_num) {
-            alert('此商品最少订购' + s_num + '份');
+            $("#update-message").html('* 此商品最少订购' + s_num + '份');
+            $("#update-message").fadeIn();
         } else if (num >= s_num) {
-            document.getElementById('count-' + id).value = num;
+            //Perform the ajax post
+            $.post("/ShoppingCart/Jia", { "id": id },
+                function (data) {
+                    //Successful requests get here
+                    //Updata the page elements
+                    $('#count-' + data.EditId).val(data.ItemCount);
+                    $('#cart-total').text(data.CartTotal);
+                    $('#cart-status').text('购物车[' + data.CartCount + ']');
+                    submitableifenough(data.CartTotal);
+                }
+                );
+            $("#update-message").fadeOut();
+            //document.getElementById('count-' + id).value = num;
             //Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
         } else {
-            alert('商品数量不能小于1');
+            $("#update-message").html('* 请填写数字');
+            $("#update-message").fadeIn();
         }
     }
+    //点击减号
     function change_num_jian(id, s_num) {
         var num = parseInt(document.getElementById('count-' + id).value) - 1;
         if (num < s_num) {
-            alert('此商品最少订购' + s_num + '份');
+            $("#update-message").html('* 此商品最少订购' + s_num + '份');
+            $("#update-message").fadeIn();
         } else if (num >= s_num) {
-            document.getElementById('count-' + id).value = num;
+            //Perform the ajax post
+            $.post("/ShoppingCart/Jian", { "id": id },
+                function (data) {
+                    //Successful requests get here
+                    //Updata the page elements
+                    $('#count-' + data.EditId).val(data.ItemCount);
+                    $('#cart-total').text(data.CartTotal);
+                    $('#cart-status').text('购物车[' + data.CartCount + ']');
+                    submitableifenough(data.CartTotal);
+                }
+                );
+            $("#update-message").fadeOut();
+            //document.getElementById('count-' + id).value = num;
             //Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
         } else {
-            alert('商品数量不能小于1');
+            $("#update-message").html('* 请填写数字');
+            $("#update-message").fadeIn();
         }
+        
     }
     //直接输入数量
     function change_num(id, s_num) {
         var num = parseInt(document.getElementById('count-' + id).value);
         if (num < s_num) {
-            alert('此商品最少订购' + s_num + '份');
+            $("#update-message").html('* 此商品最少订购' + s_num + '份');
+            $("#update-message").fadeIn();
         } else if (num >= s_num) {
-            Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
+            //Perform the ajax post
+            $.post("/ShoppingCart/EditCount", { "id": id, "count": num },
+                function (data) {
+                    //Successful requests get here
+                    //Updata the page elements
+                    $('#count-' + data.EditId).val(data.ItemCount);
+                    $('#cart-total').text(data.CartTotal);
+                    $('#cart-status').text('购物车[' + data.CartCount + ']');
+                    submitableifenough(data.CartTotal);
+                }
+                );
+            $("#update-message").fadeOut();
+            //Ajax.call('flow.php?step=attr_goods_num', 'rec_id=' + id + '&number=' + num, num_flow_response, 'POST', 'JSON');
         } else {
-            alert('请填写数字');
+            $("#update-message").html('* 请填写数字');
+            $("#update-message").fadeIn();
+        }
+    }
+
+    //ready
+    $(function () {
+        //删除按钮Ajax
+        $(".RemoveLink").click(function () {
+            //Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != "") {
+                //Perform the ajax post
+                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        //Successful requests get here
+                        //Updata the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.EditId).fadeOut('slow');
+                        }
+                        else {
+                            $('#item-count-' + data.EditId).text(data.ItemCount);
+                        }
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('购物车[' + data.CartCount + ']');
+                        $("#update-message").fadeIn();
+                        submitableifenough(data.CartTotal);
+                    }
+                    );
+            }
+        }
+        );
+    });
+    function handleUpdate() {
+        //Load and deserialize the returned JSON data
+        var json = context.get_data();
+        var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
+        //Update the page elements
+        if (data.ItemCount == 0) {
+            $('#row-' + data.EditId).fadeOut('slow');
+        }
+        else {
+            $('#count-' + data.EditId).val(data.ItemCount);
+        }
+        $('#cart-total').text(data.CartTotal);
+        $('#update-message').text(data.Message);
+        $('#cart-status').text('购物车[' + data.CartCount + ']');
+    }
+
+    //满100元起可提交订单，用于操作数量和移除产品时判断
+    function submitableifenough(cartTotal) {
+        if (parseFloat(cartTotal) >= 100) {
+            $("#submit").removeClass("disabled");
+            $("#submit").attr("href", "/Checkout/AddressAndPayment/");
+            $("#notenough").css("color","#333");
+        }
+        else {
+            $("#submit").addClass("disabled");
+            $("#submit").attr("href", "javascript:;");
+            $("#notenough").css("color", "#ff8327");
         }
 
     }
+    //满100元起可提交订单，用于页面加载时判断
+    function submitableifenoughforpageLoad() {
+        if (parseFloat(document.getElementById('cart-total').textContent) >= 100) {
+            $("#submit").removeClass("disabled");
+            $("#submit").attr("href", "/Checkout/AddressAndPayment/");
+            $("#notenough").css("color", "#333");
+        }
+        else {
+            $("#submit").addClass("disabled");
+            $("#submit").attr("href", "javascript:;");
+            $("#notenough").css("color", "#ff8327");
+        }
+
+    }
+
+    //页面加载时判断购物车总额是否满100
+    $(document).ready(function () {
+        submitableifenoughforpageLoad();
+    });
 </script>

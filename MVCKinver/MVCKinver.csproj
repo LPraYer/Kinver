@@ -143,6 +143,9 @@
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\themes\bootstrap-datepicker\datepicker.css" />
+    <Content Include="Content\Images\announcement-small.png" />
+    <Content Include="Content\Images\announcement.png" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\count_jian.jpg" />
     <Content Include="Content\Images\count_zeng.jpg" />
@@ -159,10 +162,15 @@
     <Content Include="Content\Images\GuestsImages\IMPASTO.png" />
     <Content Include="Content\Images\GuestsImages\STARFISH.png" />
     <Content Include="Content\Images\hero-page-one.jpg" />
+    <Content Include="Content\Images\hero-page-three-text.png" />
+    <Content Include="Content\Images\hero-page-three.jpg" />
     <Content Include="Content\Images\hero-page-two-text.png" />
     <Content Include="Content\Images\hero-page-two.jpg" />
+    <Content Include="Content\Images\kinver-logo-1.png" />
+    <Content Include="Content\Images\kinver-logo-2.png" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\logo-w240.png" />
+    <Content Include="Content\Images\kinver-logo.png" />
     <Content Include="Content\Images\ProductImages\List\1.jpg" />
     <Content Include="Content\Images\ProductImages\List\10.jpg" />
     <Content Include="Content\Images\ProductImages\List\12.jpg" />
@@ -287,12 +295,8 @@
     <Content Include="Content\Images\ProductImages\Original\7.jpg" />
     <Content Include="Content\Images\ProductImages\Original\8.jpg" />
     <Content Include="Content\Images\ProductImages\Original\8_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\8_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\8_3.jpg" />
     <Content Include="Content\Images\ProductImages\Original\9.jpg" />
     <Content Include="Content\Images\ProductImages\Original\9_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\9_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Original\9_3.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\1.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\10.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\10_1.jpg" />
@@ -392,14 +396,16 @@
     <Content Include="Content\Images\ProductImages\Thumb\7.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\8.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\8_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Thumb\8_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Thumb\8_3.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\9.jpg" />
     <Content Include="Content\Images\ProductImages\Thumb\9_1.jpg" />
-    <Content Include="Content\Images\ProductImages\Thumb\9_2.jpg" />
-    <Content Include="Content\Images\ProductImages\Thumb\9_3.jpg" />
     <Content Include="Content\Images\QuoteEnd.png" />
     <Content Include="Content\Images\QuoteStart.png" />
+    <Content Include="Content\Images\ServiceImages\K3.png" />
+    <Content Include="Content\Images\ServiceImages\K5.png" />
+    <Content Include="Content\Images\ServiceImages\k6.png" />
+    <Content Include="Content\Images\ServiceImages\K7.png" />
+    <Content Include="Content\Images\ServiceImages\K8.png" />
+    <Content Include="Content\Images\ServiceImages\K9.png" />
     <Content Include="Content\Images\ServiceImages\Normal\Canting.png" />
     <Content Include="Content\Images\ServiceImages\Normal\Giftbox.png" />
     <Content Include="Content\Images\ServiceImages\Normal\Giftcard.png" />
@@ -408,6 +414,11 @@
     <Content Include="Content\Images\ServiceImages\Small\giftbox.png" />
     <Content Include="Content\Images\ServiceImages\Small\giftcard.png" />
     <Content Include="Content\Images\ServiceImages\Small\jiating.png" />
+    <Content Include="Content\Images\ServiceImages\J6.png" />
+    <Content Include="Content\Images\ServiceImages\J3.png" />
+    <Content Include="Content\Images\ServiceImages\J5.png" />
+    <Content Include="Content\Images\ServiceImages\J4.png" />
+    <Content Include="Content\Images\snake-year.jpg" />
     <Content Include="Content\Images\WaterColorImages\WaterColor_Black.png" />
     <Content Include="Content\Images\WaterColorImages\WaterColor_Blue.png" />
     <Content Include="Content\Images\WaterColorImages\WaterColor_Gold.png" />
@@ -498,6 +509,8 @@
     <None Include="Properties\PublishProfiles\万网ftp.pubxml" />
     <None Include="Properties\PublishProfiles\本地.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.zh-CN.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

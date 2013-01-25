@@ -3,6 +3,7 @@
     <meta charset="utf-8" />
     <!--基本兼容ie8以上浏览器，使用可选的最高的ie渲染模式-->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+    <meta name="google-site-verification" content="hNdz16gVTlvPTFaQWMJ0LeFtqB1wQkqz6y81dBvTyyY" />
     <title>@ViewBag.Title</title>
     <meta name="keywords" content="kinver,景悦锦辰,北京景悦锦辰贸易有限公司,海鲜,海产品,冻品,高品质食品,北京,礼盒,礼券,餐厅配送,酒店配送,帝王蟹,黑虎虾,三文鱼,金枪鱼,鳕鱼,进口,美国,加拿大,新西兰,澳大利亚,欧洲,食品,美食,食材" />
     <meta name="description" content="北京景悦锦辰贸易有限公司致力于将美国、加拿大、澳大利亚、新西兰以及欧盟国家的高品质食品带给国内消费者，公司产品涵盖海产（阿拉斯加帝王蟹、加拿大龙虾、加拿大带子、越南黑虎虾、挪威三文鱼、法国银鳕鱼等高端进口海产品）、肉制品（澳洲和牛、美国安格斯牛肉、新西兰羊排、西班牙猪肉等）、油料（西班牙橄榄油、意大利橄榄油、葡萄籽油等），我们追求0添加、高品质的食材。" />
@@ -38,13 +39,16 @@
         <div class="navbar-inner">
             <div class="container">
                 <!--标题-->
-                <a class="brand" href="@Url.Content("~")">
-                    KINVER&nbsp;&nbsp;景悦锦辰
-                </a>
+                <div id="kinver-logo">
+                    <a class="" href="/">
+                        <img src="/Content/Images/kinver-logo-1.png" alt=""/>
+                    </a>
+                </div>
+                
                 <!--导航-->
                 <input id="menuSelected" type="hidden" value="@ViewBag.menuSelected"/>
                 <ul id="kinvernav" class="nav">
-                    <li id="home"><a href="@Url.Content("~")" id="current">首页</a></li>
+                    <li id="home"><a href="/" id="current">首页</a></li>
                     @*<li class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                             服务
@@ -74,9 +78,25 @@
                         <!--商品下拉菜单-->
                         @{Html.RenderAction("GenreMenuForNav","Home");}
                     </li>
-                    @*<li>
+                    <li id="holiday-message" class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            @*<img src="/Content/Images/announcement-small.png" alt="公告" style="width:16px;height:16px;"/>*@
+                            假期公告
+                            <b class="caret"></b>
+                        </a>
+                        <div class="dropdown-menu pull-right" style="width:500px;padding:10px;color:#333;background-image:url(/Content/Images/snake-year.jpg);background-position:right bottom;background-repeat:no-repeat;" role="menu" aria-labelledby="stores">
+                            <p style="font-size:1.2em;"><img src="/Content/Images/announcement.png" alt="公告" style="margin-right:10px;width:32px;height:32px;"/><span>尊敬的各位客户，大家好！</span></p>
+                            <p style="text-indent:2em;">由于春节临近，配送和服务人员陆续离京，我们无法保证春节期间的及时配送，为了不影响您和家人的假期安排，现将春节期间的配送服务告知大家：</p>
+                            <p style="text-indent:2em;"><b>我们从2月4日开始暂停发货，2月17日起恢复正常。</b>如果您在春节之前需要礼盒和产品，请于2月2日前联系我们安排配送。春节期间的订单将统一从2月17日起开始发货。</p>
+                            <p style="text-indent:2em;">给您带来的不便请您谅解，也感谢您的配合与支持！</p>
+                            <p style="text-indent:2em;">景悦锦辰恭祝各位：</p>
+                            <p style="text-indent:2em;font-size:1.2em;">蛇年吉祥，财源广进！</p>
+                            <p style="text-indent:2em;font-size:1.2em;">合家团圆，幸福安康！</p>
+                        </div>
+                    </li>
+                    <li>
                         @{Html.RenderAction("CartSummary","ShoppingCart");}
-                    </li>*@
+                    </li>
                 </ul>
 
             </div>
@@ -118,9 +138,12 @@
             </div>
             <div id="footer-copyright">
                 <span>北京景悦锦辰贸易有限公司</span>
-                <span>Copyright&copy;2012</span>
+                <span>Copyright&copy;2012-2013</span>
                 <span>京ICP备12044025号</span>
                 <span>工商注册号110108015117522</span>
+            </div>
+            <div id="powered-by">
+                <span>Powered by <a href="http://pickupstudio.org" target="_blank">PickupStudio</a></span>
             </div>
         </div>
     </div>
@@ -137,5 +160,11 @@
             }
         });
     </script>
+    <div style="display:none;">
+        <script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F07ad059840e74401fab9bb229817ca53' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </div>
 </body>
 </html>

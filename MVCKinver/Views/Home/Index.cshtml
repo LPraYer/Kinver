@@ -5,7 +5,7 @@
 <div id="promotion">
     <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
-            <div id="promotion1" class="active item">
+            <div id="promotion1" class="item">
                 <div class="container">
                     <a href="@Url.Content("~/Service/Details/3")" class="btn btn-large">查看景悦家庭配送服务 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a>
                 </div>
@@ -20,11 +20,16 @@
                     
                 </div>
             </div>
-@*            <div id="promotion3" class="item">
+            <div id="promotion3" class="active item">
                 <div class="container">
-                    <a href="@Url.Content("~/Service/Details/4")" class="btn btn-large">查看景悦家庭配送服务 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a>
+                    <div class="contents">
+                        <img src="@Url.Content("~/Content/Images/hero-page-three-text.png")" />
+                        <p>
+                            <a href="@Url.Content("~/Service/Details/1")" class="btn btn-large">浏览礼盒产品 <span style="font-family:Arial;font-size:larger;">&rsaquo;&rsaquo;</span></a>
+                        </p>
+                    </div>
                 </div>
-            </div>*@
+            </div>
         </div>
         <script>
             !function ($) {
@@ -33,10 +38,9 @@
                 })
             }(window.jQuery)
         </script>
-        <a style="color:gray;" class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a style="color:gray;" class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        <a style="color:white;" class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a style="color:white;" class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
-    
 </div>
 <div id="services">
     <div class="container">
@@ -129,12 +133,20 @@
                              title="@product.Title"
                              src="../Content/Images/ProductImages/List/@product.MainImageUrl" />
                     </a>
-                    <p class="title">
+                    <div class="title">
                         <a href="@Url.Action("Details", "Store", new { id = product.ProductId})" title="@product.Title" target="_blank">
                             @product.Title
                         </a>
-                        <span class="price">￥@product.ProductSizes.First().PricePerKG<span class="kg">&nbsp;/&nbsp;kg</span></span>
-                    </p>
+                        <div style="margin-top:5px;">
+                            <div style="float:left;">￥<b style="color:#ff6a00;">@product.ProductSizes.FirstOrDefault().PricePerUnit</b> 元 / @product.ProductSizes.FirstOrDefault().SaleUnit <span class="muted">( @product.ProductSizes.FirstOrDefault().NetWeightPerUnit 克 )</span></div>
+                            <div style="float:right;margin-right:10px;">
+                                来自
+                                <span style="color:#3A87AD;">
+                                    @product.Area.Name
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             }
         </div>
@@ -170,3 +182,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#holiday-message").addClass("open");
+    });
+</script>

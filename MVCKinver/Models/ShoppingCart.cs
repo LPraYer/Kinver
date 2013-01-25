@@ -55,6 +55,38 @@ namespace MVCKinver.Models
             storeDB.SaveChanges();
         }
 
+        public int Jia(int id)
+        {
+            var cartItem = storeDB.Carts.Single(
+                cart => cart.CartId == ShoppingCartId
+                && cart.RecordId == id);
+            cartItem.Count++;
+            var itemCount = cartItem.Count;
+            storeDB.SaveChanges();
+            return itemCount;
+        }
+
+        public int Jian(int id)
+        {
+            var cartItem = storeDB.Carts.Single(
+                cart => cart.CartId == ShoppingCartId
+                && cart.RecordId == id);
+            cartItem.Count--;
+            var itemCount = cartItem.Count;
+            storeDB.SaveChanges();
+            return itemCount;
+        }
+
+        public int EditCount(int id,int count)
+        {
+            var cartItem = storeDB.Carts.Single(
+                cart => cart.CartId == ShoppingCartId
+                && cart.RecordId == id);
+            cartItem.Count = count;
+            storeDB.SaveChanges();
+            return count;
+        }
+
         public int RemoveFromCart(int id)
         { 
             //获得购物车
@@ -64,15 +96,15 @@ namespace MVCKinver.Models
             int itemCount = 0;
             if (cartItem != null)
             {
-                if (cartItem.Count > 1)
-                {
-                    cartItem.Count--;
-                    itemCount = cartItem.Count;
-                }
-                else
-                {
+                //if (cartItem.Count > 1)
+                //{
+                //    cartItem.Count--;
+                //    itemCount = cartItem.Count;
+                //}
+                //else
+                //{
                     storeDB.Carts.Remove(cartItem);
-                }
+                //}
                 //保存更改
                 storeDB.SaveChanges();
             }
@@ -127,13 +159,13 @@ namespace MVCKinver.Models
             {
                 var orderDetail = new OrderDetail
                 {
-                    ProductId = item.ProductSizeId,
+                    ProductSizeId = item.ProductSizeId,
                     OrderId = order.OrderId,
-                    //UnitPrice = item.Product.Price,
+                    UnitPrice = item.ProductSize.PricePerUnit,
                     Quantity = item.Count
                 };
                 //设置购物车的订单总价
-               // orderTotal += (item.Count * item.Product.Price);
+                orderTotal += (item.Count * item.ProductSize.PricePerUnit);
                 storeDB.OrderDetails.Add(orderDetail);
             }
             //设置订单总价

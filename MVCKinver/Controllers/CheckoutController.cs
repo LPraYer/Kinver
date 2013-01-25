@@ -5,11 +5,11 @@ using MVCKinver.Models;
 
 namespace MVCKinver.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CheckoutController : Controller
     {
         KinverEntities storeDB = new KinverEntities();
-        const string PromoCode = "FREE";
+        //const string PromoCode = "FREE";
         //
         // GET: /Checkout/AddressAndPayment
 
@@ -24,15 +24,34 @@ namespace MVCKinver.Controllers
         {
             var order = new Order();
             TryUpdateModel(order);
+            string BDTAll = "";
+            string[] BDTs = values.GetValues("BestDeliverTime");
+            if (BDTs != null)
+            {
+                foreach (var BDT in BDTs)
+                {
+                    BDTAll = BDTAll + BDT;
+                }
+            }
+            order.BestDeliverTime = BDTAll;
+            //var BDT = "";
+            //for (int k = 0; k < Request.Form.AllKeys.Length ; k++ )
+            //{
+            //    if (Request.Form.GetKey(k) == "BestDeliverTime")
+            //    {
+            //        BDT = BDT + Request.Form.GetValues(k);
+            //    }
+            //}
+            //order.BestDeliverTime = BDT;
             try
             {
-                if (string.Equals(values["PromoCode"], PromoCode, StringComparison.OrdinalIgnoreCase) == false)
-                {
-                    return View(order);
-                }
-                else
-                {
-                    order.Username = User.Identity.Name;
+                //if (string.Equals(values["PromoCode"], PromoCode, StringComparison.OrdinalIgnoreCase) == false)
+                //{
+                //    return View(order);
+                //}
+                //else
+                //{
+                    //order.Username = User.Identity.Name;
                     order.OrderDate = DateTime.Now;
                     //Save Order
                     storeDB.Orders.Add(order);
@@ -40,8 +59,9 @@ namespace MVCKinver.Controllers
                     //Process the order
                     var cart = ShoppingCart.GetCart(this.HttpContext);
                     cart.CreateOrder(order);
-                    return RedirectToAction("Complete", new { id = order.OrderId });
-                }
+                    storeDB.SaveChanges();
+                    return RedirectToAction("Complete");
+                //}
             }
             catch
             { 
@@ -51,20 +71,21 @@ namespace MVCKinver.Controllers
         }
 
         //GET: /Checkout/Complete
-        public ActionResult Complete(int id)
+        public ActionResult Complete()
         { 
             //Validate customer owns this order
-            bool isValid = storeDB.Orders.Any(
-                o => o.OrderId == id &&
-                o.Username == User.Identity.Name);
-            if (isValid)
-            {
-                return View(id);
-            }
-            else
-            {
-                return View("Error");
-            }
+            //bool isValid = storeDB.Orders.Any(
+            //    o => o.OrderId == id
+            // && o.Username == User.Identity.Name);
+            //if (isValid)
+            //{
+            //    return View(id);
+            //}
+            //else
+            //{
+            //    return View("Error");
+            //}
+            return View();
         }
 
     }

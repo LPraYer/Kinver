@@ -1,6 +1,6 @@
 ﻿@model List<MVCKinver.Models.Genre>
 
-<ul class="dropdown-menu" role="menu" aria-labelledby="stores">
+<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="stores">
 @{
     var roots = Model.Where(g => g.FatherGenreId == 0).ToList();
     var i = 0;

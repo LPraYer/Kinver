@@ -19,11 +19,6 @@ ul#product-list li
 	text-align: left;
 }
 
-ul#product-list li a, ul#product-list li .button
-{
-	font-size: 13px;
-}
-
 ul#product-list li a span
 {
 	color: #9b9993;
@@ -33,6 +28,11 @@ ul#product-list li a span
 
     ul#product-list li {
         width:240px;
+        height:260px;
+    }
+
+    ul#product-list .product-title a {
+        font-size:1em;
     }
 
     ul#product-list img {
@@ -44,9 +44,14 @@ ul#product-list li a span
             width:300px;
         }
 
+        ul#product-list .product-title a {
+        font-size:1.2em;
+        }
+
         ul#product-list li {
         width:300px;
-    }
+        height:270px;
+        }
     }
 
 /*图片的鼠标悬浮过渡*/
@@ -71,8 +76,7 @@ ul#product-list img, #hot-products img, #product-details-images img {
 
 #update-message
 {
-	color: #F6855E;
-	font-weight: bold;
+	color: #FF8327;
 }
 
 
@@ -138,7 +142,7 @@ div.editor-field
 
 /* Styles for validation helpers */
 .field-validation-error {
-    color: #ff0000;
+    color: #ff8327;
 }
 
 .field-validation-valid {
@@ -203,19 +207,8 @@ div.editor-field
 }
 
     #hot-products .title a {
-        color:dodgerblue;
-        font-weight:bolder;
+        font-size:1.2em;
     }
-
-    #hot-products .title .price {
-        float:right;
-        font-family:Georgia;
-        color:tomato;
-    }
-
-        #hot-products .title .price .kg {
-            color:gray;
-        }
 
 #restaurants {
 text-align:center;
@@ -240,18 +233,14 @@ text-align:center;
     margin-top:80px;
 }
 
-#footer-copyright {
-    color:gray;
-}
-
-#footer-links,#footer-copyright {
+#footer-links,#footer-copyright,#powered-by {
     text-align:center;
     line-height:24px;
+    color:gray;
 }
 
     #footer-links a {
         margin:20px,10px;
-        color:dodgerblue;
     }
 
     #footer-links span {
@@ -310,12 +299,12 @@ text-align:center;
 }
 
     #promotion1 a {
-      margin-top:400px;
-      background-color:rgba(255,255,255, 0.70);
-    background-image:none;
-    text-shadow:1px 1px 1px #eee;
-    color:#390505;
-    -webkit-transition:all 0.2s ease-in-out;
+        margin-top:400px;
+        background-color:rgba(255,255,255, 0.70);
+        background-image:none;
+        text-shadow:1px 1px 1px #eee;
+        color:#390505;
+        -webkit-transition:all 0.2s ease-in-out;
     }
 
         #promotion1 a:hover {
@@ -339,12 +328,12 @@ text-align:center;
     }
 
     #promotion2 a {
-      margin-top:50px;
-      background-color:rgba(255,255,255, 0.70);
-    background-image:none;
-    text-shadow:1px 1px 1px #eee;
-    color:#390505;
-    -webkit-transition:all 0.2s ease-in-out;
+        margin-top:50px;
+        background-color:rgba(255,255,255, 0.70);
+        background-image:none;
+        text-shadow:1px 1px 1px #eee;
+        color:#390505;
+        -webkit-transition:all 0.2s ease-in-out;
     }
 
         #promotion2 a:hover {
@@ -354,12 +343,40 @@ text-align:center;
 #promotion3
 {
     height: 550px;
+    margin-top:20px;
 	margin-left:0;
     margin-right:0;
-	/*background: url(/content/Images/hero-page.jpg) center 20px,0,0,0 no-repeat ;*/
-    text-align:center;
+    background-image:url(/content/Images/hero-page-three.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
+    text-align:right;
     
 }
+
+    #promotion3 .contents {
+        margin-right:50px;
+        margin-top:300px;
+    }
+
+        @media (min-width: 1200px) {
+            #promotion3 .contents {
+                margin-right: 150px;
+                margin-top: 300px;
+            }
+        }
+
+    #promotion3 a {
+        margin-top:30px;
+        background-color:rgba(255,255,255, 0.70);
+        background-image:none;
+        text-shadow:1px 1px 1px #eee;
+        color:#390505;
+        -webkit-transition:all 0.2s ease-in-out;
+    }
+
+        #promotion3 a:hover {
+            background-color:rgba(255,255,255,1);
+        }
 
 
 /*产品详情页样式*/
@@ -447,4 +464,39 @@ img.bigcursor {
     height:320px;
     float:left;
 
+}
+
+#kinver-logo {
+    background-image:url(/Content/Images/kinver-logo-2.png);
+    background-position:left top;
+    background-repeat:no-repeat;
+    width:220px;
+    height:40px;
+    float:left;
+    transition:  ease-in .2s;
+    -webkit-transition:all ease-in .2s;
+    -moz-transition:all ease-in .2s;
+}
+
+    #kinver-logo img {
+        transition:  ease-in .2s;
+        -webkit-transition:all ease-in .2s;
+        -moz-transition:all ease-in .2s;
+    }
+
+#kinver-logo img:hover {
+    opacity:0;
+    -moz-opacity:0;
+}
+
+#order-form #Address {
+    width:412px;
+}
+
+#order-form #PostalCode {
+    width:100px;
+}
+
+#order-form #PhoneNumber {
+    width:306px;
 }

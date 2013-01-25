@@ -1,15 +1,36 @@
-﻿@model int
+﻿
 
 @{
-    ViewBag.Title = "Checkout Complete";
+    ViewBag.Title = "订单已提交_景悦锦辰";
 }
 
-<h2>
-    Checkout Complete
-</h2>
+<div class="container container-margin-top">
+<h3>
+    您的订单已提交
+</h3>
 <p>
-    Thanks for your order!Your order number is:@Model
+    感谢您选择景悦食材，我们会在您指定的日期和时间为您配送上门，并在配送之前与您电话确认。
 </p>
 <p>
-    How about shopping for some more product in our @Html.ActionLink("store","Index","Home");
+    如果您有任何问题，请随时致电 010-82226488 与我们联系，我们的客服 7 × 24 小时为您服务！
 </p>
+<p>
+    同时欢迎您在等待美味的同时，将这份喜悦分享给您的家人和朋友：
+    <div class="bshare-custom">
+        <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+        <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+        <a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a>
+        <a title="分享到豆瓣" class="bshare-douban"></a>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        bShare.addEntry({
+            title: "#景悦锦辰甄选食材#",
+            summary: "美味不能独享，我在这里采购了最棒的进口食材，分享给大家~┏ (゜ω゜)=☞",
+            url: "http://kinver.cn"
+        });
+    </script>
+</p>
+</div>
