@@ -159,7 +159,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: 'Microsoft Yahei',"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Hiragino Sans GB','Microsoft Yahei',"Helvetica Neue";
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -634,7 +634,7 @@ h5,
 h6 {
   margin: 10px 0;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: normal;
   line-height: 1;
   color: inherit;
   text-rendering: optimizelegibility;

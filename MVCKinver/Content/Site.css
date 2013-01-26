@@ -272,7 +272,6 @@ text-align:center;
 	clear: both;
 	padding: 10px;
 	text-align: right;
-	font-family: 'Microsoft YaHei';
 }
 
 #promotion {
@@ -499,4 +498,8 @@ img.bigcursor {
 
 #order-form #PhoneNumber {
     width:306px;
+}
+
+.product-title-en {
+    font-family:'Cuprum';
 }
